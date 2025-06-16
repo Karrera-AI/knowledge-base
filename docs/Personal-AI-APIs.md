@@ -1,4 +1,4 @@
-# Documentation for the Personal-AI APIs
+# Personal-AI APIs
 
 This document explains the APIs interactions of the Personal AI backend for the **Karrera - Personal AI** project. It details the entire flow from user creation to the end results, detailing all the methods with their respective inputs and outputs.
 
