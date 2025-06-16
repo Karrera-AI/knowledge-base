@@ -1,4 +1,4 @@
-# API Gateway Setup Documentation
+# API Gateway Setup
 
 This document explains the setup of the API Gateway for the project **Karrera - Personal AI** project using Google Cloud API Gateway. The backend services are hosted on **Google Compute Engine (VM)**, and the API is defined using **OpenAPI 2.0**. It explains how to use Google Cloud's fully managed API Gateway to securely expose an application running on a Compute Engine Virtual Machine (VM). This approach is ideal for centralizing API access, providing API key enforcement, and decoupling clients from your backend VM's network details, all without managing gateway infrastructure yourself.
 
