@@ -42,3 +42,60 @@ To create a backend service
 ```
 gcloud compute backend-services create BACKEND_SERVICE_NAME --global
 ```
+
+To add your serverless NEG as a backend to the backend service, run the following command
+```
+gcloud compute backend-services add-backend BACKEND_SERVICE_NAME \
+  --global \
+  --network-endpoint-group=SERVERLESS_NEG_NAME \
+  --network-endpoint-group-region=REGION_ID
+```
+
+### Step 3: Create a URL map to route incoming requests to the backend service
+
+To create the URL map, run the following command
+```
+gcloud compute url-maps create URL_MAP_NAME \
+  --default-service BACKEND_SERVICE_NAME
+```
+
+Or create it directly from console:
+![image info](./assets/url-map.png)
+
+### Step 4: Create an SSL certificate for your target proxy
+
+To create a self-managed SSL certificate resource:
+```
+gcloud compute ssl-certificates create SSL_CERTIFICATE_NAME \
+  --certificate CRT_FILE_PATH \
+  --private-key KEY_FILE_PATH
+```
+
+Or create it directly from console, in Load Balancer's Frontend configuration:
+![image info](./assets/ssl-certificate.png)
+
+### Step 5: Create a target HTTP(S) proxy to route requests to your URL map
+
+To create the target proxy, use the following command:
+```
+gcloud compute ssl-certificates create gcloud compute target-https-proxies create TARGET_HTTPS_PROXY_NAME \
+  --ssl-certificates=SSL_CERT_NAME \
+  --url-map=URL_MAP_NAME
+```
+
+### Step 6: Create a forwarding rule to route incoming requests to the proxy
+
+Use the following command to create the forwarding rule:
+```
+gcloud compute forwarding-rules create HTTPS_FORWARDING_RULE_NAME \
+  --target-https-proxy=TARGET_HTTPS_PROXY_NAME \
+  --global \
+  --ports=443
+```
+
+### Step 7: Update DNS records with load balancer IP address
+![image info](./assets/ip-lb.png)
+
+## Creating multiple backend services for LB
+
+Repeat step 1 and 2 for new backend service, and update the URL Map path rules.
