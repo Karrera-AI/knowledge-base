@@ -47,7 +47,8 @@ These files are used to store specific information from each user and will be de
 ### YYYY-MM-DDThhmmssZ.kar
 
 **Description**
-This is an excripted tar file that contains the whole **KarreraAi** folder content. It will be used as a source to restore user's data in case of file corruption and/or deletion.
+
+This is an encripted tar file that contains the whole **KarreraAi** folder content. It will be used as a source to restore user's data in case of file corruption and/or deletion.
 
 **Creation Workflow Diagram**
 
