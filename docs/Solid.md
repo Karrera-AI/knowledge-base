@@ -50,6 +50,28 @@ These files are used to store specific information from each user and will be de
 
 This is an encripted tar file that contains the whole **KarreraAi** folder content. It will be used as a source to restore user's data in case of file corruption and/or deletion.
 
-**Creation Workflow Diagram**
+**Workflow Diagram**
 
 ![image info](./assets/BackupFlow.jpg)
+
+### .version.ttl
+
+**Description**
+
+This file is used to define the **KarreraAi Data Structure** version. It will be used to check version and update the structure or reject the user depending on the situation.
+
+**File Structure**
+
+```ttl title=".version.ttl" linenums="1"
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+@prefix schema:  <https://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/.system/.version.ttl>
+        a                   schema:Dataset;
+        dcterms:date        "YYYY-MM-DD"^^xsd:date;
+        dcterms:hasVersion  "1.0";
+        schema:description  "Este arquivo informa a versão do POD do usuário".
+```
