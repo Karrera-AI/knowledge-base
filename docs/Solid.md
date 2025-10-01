@@ -51,4 +51,4 @@ This is an excripted tar file that contains the whole **KarreraAi** folder conte
 
 **Creation Workflow Diagram**
 
-![image info](./assets/BackupFlow.pdf)
+![image info](./assets/BackupFlow.jpg)
