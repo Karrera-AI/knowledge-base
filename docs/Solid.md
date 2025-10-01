@@ -1,4 +1,4 @@
-# SOLID
+# Solid
 
 All user's information will be stored in a Solid POD. This structure will guarantee that the users's personal data are not stored in our servers and therefore prevent these information from being used without user's approval.
 
