@@ -56,9 +56,13 @@ This is an encripted tar file that contains the whole **KarreraAi** folder conte
 
 ### .version.ttl
 
+**File Location**
+
+<User's POD>/KarreraAI/.system/
+
 **Description**
 
-This file is used to define the **KarreraAi Data Structure** version. It will be used to check version and update the structure or reject the user depending on the situation.
+This file is used to define the **KarreraAi Data Structure** version. It will be used to check version and decide whether to update the structure or reject the user login depending on the situation.
 
 **File Structure**
 
@@ -75,3 +79,65 @@ This file is used to define the **KarreraAi Data Structure** version. It will be
         dcterms:hasVersion  "1.0";
         schema:description  "Este arquivo informa a versão do POD do usuário".
 ```
+
+**Fields Description**
+
+* **dcterms:date** - Last modified date
+
+* **dcterms:hasVersion** - Data structure version
+
+* **schema:description** - File description
+
+### .artifacts-index.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/artifacts/
+
+**Description**
+
+.
+
+**File Structure**
+
+```ttl title=".version.ttl" linenums="1"
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX esco:    <http://data.europa.eu/esco/model#>
+PREFIX schema:  <https://schema.org/>
+PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/.artifacts-index.ttl>
+        a                       schema:ItemList;
+        schema:itemListElement  [ a                         schema:DigitalDocument;
+                                  schema:encodingFormat     "application/pdf";
+                                  schema:datePublished      "YYYY-MM-YYThhmmssZ"^^xsd:dateTime;
+                                  schema:description        "File Description";
+                                  schema:genre              "Tipo do arquivo";
+                                  schema:name               "File Name";
+                                  schema:archivedAt         </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/CV.pdf>;
+                                  schema:url                <File URL>;
+                                  schema:creativeWorkStatus "Processed";
+                                  schema:subjectOf          [
+                                                            a schema:Event;
+                                                            schema:name "Upload event"
+                                                            ]
+                                ] .
+```
+
+**Fields Description**
+
+* **schema:encodingFormat** -
+* **schema:datePublished** -
+* **schema:description** -
+* **schema:genre** -
+* **schema:name** -
+* **schema:archivedAt** -
+* **schema:url** -
+* **schema:creativeWorkStatus** -
+* **schema:subjectOf**
+    * **schema:name** -
+
+
+
+
