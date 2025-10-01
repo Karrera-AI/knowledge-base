@@ -108,21 +108,22 @@ PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/.artifacts-index.ttl>
-        a                       schema:ItemList;
-        schema:itemListElement  [ a                         schema:DigitalDocument;
-                                  schema:encodingFormat     "application/pdf";
-                                  schema:datePublished      "YYYY-MM-YYThhmmssZ"^^xsd:dateTime;
-                                  schema:description        "File Description";
-                                  schema:genre              "Tipo do arquivo";
-                                  schema:name               "File Name";
-                                  schema:archivedAt         </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/CV.pdf>;
-                                  schema:url                <File URL>;
-                                  schema:creativeWorkStatus "Processed";
-                                  schema:subjectOf          [
-                                                            a schema:Event;
-                                                            schema:name "Upload event"
-                                                            ]
-                                ] .
+    a schema:ItemList;
+    schema:itemListElement  [
+                            a schema:DigitalDocument;
+                            schema:encodingFormat     "application/pdf";
+                            schema:datePublished      "YYYY-MM-YYThhmmssZ"^^xsd:dateTime;
+                            schema:description        "File Description";
+                            schema:genre              "Tipo do arquivo";
+                            schema:name               "File Name";
+                            schema:archivedAt         </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/CV.pdf>;
+                            schema:url                <File URL>;
+                            schema:creativeWorkStatus "Processed";
+                            schema:subjectOf    [
+                                                a schema:Event;
+                                                schema:name "Upload event"
+                                                ]
+                            ] .
 ```
 
 **Fields Description**
