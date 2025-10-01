@@ -96,7 +96,7 @@ This file is used to define the **KarreraAi Data Structure** version. It will be
 
 **Description**
 
-.
+This file is used to store the list of artifacts uploaded to users's pod. This artifacts can be uploaded by the user itself or by the application backoffice agents. It includes some informations from each artifact that will be described later in this documet.
 
 **File Structure**
 
@@ -128,16 +128,24 @@ PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
 
 **Fields Description**
 
-* **schema:encodingFormat** -
-* **schema:datePublished** -
-* **schema:description** -
-* **schema:genre** -
-* **schema:name** -
-* **schema:archivedAt** -
-* **schema:url** -
-* **schema:creativeWorkStatus** -
+* **schema:encodingFormat** - File encoding format
+* **schema:datePublished** - Date and Time when the file was uploaded (Format: YYYY-MM-YYThhmmssZ) 
+* **schema:description** - File description
+* **schema:genre** - The genre of the file. It is used to define the category of the file. It can be one of the following options:
+    * CV
+    * Scrape
+    * Personal Document
+    * Project Document
+* **schema:name** - Artifact name
+* **schema:archivedAt** - Folder where the file is stored at users's POD
+* **schema:url** - URL from where the file was downloaded
+* **schema:creativeWorkStatus** - File processment status. It can be one of the following options:
+    * Processed
+    * Pending
 * **schema:subjectOf**
-    * **schema:name** -
+    * **schema:name** - Name of the process that generated that file. It can be one of the following options:
+        * Uploaded by user
+        * Scrape from WEB
 
 
 
