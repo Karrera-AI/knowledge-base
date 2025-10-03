@@ -8,6 +8,8 @@ This data repository stores various aspects of an individual's professional and 
 
 The application data are stored using a folder struture as follows:
 
+![image info](./assets/FolderStructure.jpg)
+
 ![image info](./assets/PodFolder.png)
 
 ## List of Files
