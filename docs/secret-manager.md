@@ -22,7 +22,7 @@ return payload
 ## Javascript
 
 
-```js title="secret_manager.js" linenums="1" hl_lines="2-4"
+```js title="secret_manager.js" linenums="1"
 // Import the Secret Manager client and instantiate it:
 const {SecretManagerServiceClient} = require('@google-cloud/secret-manager');
 const client = new SecretManagerServiceClient();
@@ -45,7 +45,7 @@ AccessSecret();
 
 ## Go
 
-```go title="secret_manager.js" linenums="1" hl_lines="2-4"
+```go title="secret_manager.js" linenums="1"
 package main
 
 import (
