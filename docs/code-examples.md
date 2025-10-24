@@ -12,7 +12,7 @@ print('The sum is:', result)
 ```
 
 
-An example of a codeblock for python:
+An example of a codeblock for javascript:
 
 
 ```js title="code-examples.js" linenums="1" hl_lines="2-4"
