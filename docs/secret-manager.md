@@ -1,4 +1,4 @@
-# Secret Manager user guide
+# Secret Manager
 
 ## Python
 
