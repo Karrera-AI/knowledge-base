@@ -410,36 +410,6 @@ PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
 * **schema:title** - Title of the persona defined by the user
 * **schema:url** - User webid
 
-### .project-index.ttl
-
-**File Location**
-
-<User's POD>/KarreraAI/personas/main/
-
-**Description**
-
-This file stores a list of project where the user had some participation. Each entry represents a url linking to a specific project file. 
-
-**File Structure**
-
-```ttl title=".project-index.ttl" linenums="1"
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix esco:    <http://data.europa.eu/esco/model#> .
-@prefix schema:  <http://schema.org/> .
-@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
-
-</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/main/.project-index.ttl> 
-    a schema:ItemList;
-
-    schema:itemListElement  </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/project/c160b433-0709-4bfa-92c6-30a3e9cc224e.ttl> ,
-                            </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/Project/af443277-c582-4e41-98c5-9cbf5e570447.ttl> .
-```
-
-**Fields Description**
-
-* **schema:itemListElement** - List of URLs of each project
-
 ### .organization-index.ttl
 
 **File Location**
@@ -500,36 +470,6 @@ This file stores a list of persons the user had some relationships. Each entry r
 
 * **schema:itemListElement** - List of URLs of each person. It can be a WebID in case the user is already registered.
 
-### .organization-index.ttl
-
-**File Location**
-
-<User's POD>/KarreraAI/personas/main/
-
-**Description**
-
-This file stores a list of organizations the user had some relationships. Each entry represents a url linking to a specific organization file or webID. 
-
-**File Structure**
-
-```ttl title=".organization-index.ttl" linenums="1"
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix esco:    <http://data.europa.eu/esco/model#> .
-@prefix schema:  <http://schema.org/> .
-@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
-
-</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/main/.organization-index.ttl> 
-    a schema:ItemList;
-
-    schema:itemListElement  </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/organization/c160b433-0709-4bfa-92c6-30a3e9cc224e.ttl> ,
-                            </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/organization/99480e94-308a-4fb4-a128-61c3b79adfa0.ttl> .
-```
-
-**Fields Description**
-
-* **schema:itemListElement** - List of URLs of each organization. It can be a WebID in case the organization is already registered.
-
 ### .project-index.ttl
 
 **File Location**
@@ -538,7 +478,7 @@ This file stores a list of organizations the user had some relationships. Each e
 
 **Description**
 
-This file stores a list of projects the user had some relationships. Each entry represents a url linking to a specific project file. 
+This file stores a list of project where the user had some participation. Each entry represents a url linking to a specific project file. 
 
 **File Structure**
 
@@ -552,176 +492,13 @@ This file stores a list of projects the user had some relationships. Each entry 
 </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/main/.project-index.ttl> 
     a schema:ItemList;
 
-    schema:itemListElement  </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/project/3a6da3e9-89f2-4ff5-ba51-329555b3a075.ttl> ,
-                            </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/project/3eda18c9-c429-4603-a261-9945bfa2d40c.ttl> .
+    schema:itemListElement  </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/project/c160b433-0709-4bfa-92c6-30a3e9cc224e.ttl> ,
+                            </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/Project/af443277-c582-4e41-98c5-9cbf5e570447.ttl> .
 ```
 
 **Fields Description**
 
-* **schema:itemListElement** - List of URLs of each project.
-
-### .CCIH-Definitions.ttl
-
-**File Location**
-
-<User's POD>/KarreraAI/.system
-
-**Description**
-
-This file stores the definitions of each (Career Capital & Impact Horizon) CCIH indicator. CCIH is a multi-dimensional, dynamic, and contextual framework for measuring **Professional Lifetime Value (PLV)**.
-
-**File Structure**
-
-```ttl title=".CCIH-Definitions.ttl" linenums="1"
-@prefix dcterms: 	<http://purl.org/dc/terms/> .
-@prefix esco:    	<http://data.europa.eu/esco/model#> .
-@prefix schema:  	<http://schema.org/> .
-@prefix skos:    	<http://www.w3.org/2004/02/skos/core#> .
-@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
-
-</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/.system/.CCIH-Definitions.ttl>
-    a schema:DefinedTermSet ;
-	
-	# CCIH - Career Capital & Impact Horizon
-    schema:hasDefinedTerm [
-        a schema:DefinedTerm ;
-        schema:termCode "CCIH" ;
-        schema:name "Career Capital & Impact Horizon (CCIH)" ;
-        schema:bestRating "100" ;
-		schema:description "A multi-dimensional, dynamic, and contextual framework for measuring Professional Lifetime Value (PLV)." ;
-
-        # HCA - Human Capital Assets
-		schema:hasDefinedTerm [
-            a schema:DefinedTerm ;
-            schema:termCode "HCA" ;
-            schema:name "Human Capital Assets (HCA)" ;
-            schema:description "The foundation of an individual's professional value, including skills and adaptability." ;
-			schema:bestRating "100" ;
-			schema:hasDefinedTerm <#AQ>, <#SMI>
-			] ;
-			
-		# SRC - Social & Relational Capital
-		schema:hasDefinedTerm [
-            a schema:DefinedTerm ;
-            schema:termCode "SRC" ;
-            schema:name "Social & Relational Capital (SRC)" ;
-            schema:description "Quantifies the value derived from an individual's professional network and collaborations." ;
-			schema:bestRating "100" ;
-			schema:hasDefinedTerm <#NDS>, <#IRI>
-			] ;
-			
-		# IOV - Impact & Output Value
-		schema:hasDefinedTerm [
-            a schema:DefinedTerm ;
-            schema:termCode "IOV" ;
-            schema:name "Impact & Output Value (IOV)" ;
-            schema:description "It measures the direct and demonstrable contributions an individual makes in their professional role." ;
-			schema:bestRating "100" ;
-			schema:hasDefinedTerm <#IAC>, <#SAR>
-			] ;
-			
-		# GTMA - Growth Trajectory & Market Alignment
-		schema:hasDefinedTerm [
-            a schema:DefinedTerm ;
-            schema:termCode "GTMA" ;
-            schema:name "Growth Trajectory & Market Alignment (GTMA)" ;
-            schema:description "It tracks trajectories rather than just snapshots, emphasizing future potential and benchmarking against peers while also tracking personal growth." ;
-			schema:bestRating "100" ;
-			schema:hasDefinedTerm <#BETA>, <#ORL>
-			] ;
-			
-		# WS - Well-being & Sustainability
-		schema:hasDefinedTerm [
-            a schema:DefinedTerm ;
-            schema:termCode "WS" ;
-            schema:name "Well-being & Sustainability (WS)" ;
-            schema:description "It acknowledges non-linear careers and ethical contributions as core principles of the CCIH Framework." ;
-			schema:bestRating "100" ;
-			schema:hasDefinedTerm <#SJFA>, <#GSI>
-			] ;		
-		
-	] .
-	# End of CCIH - Career Capital & Impact Horizon (CCIH)
-	
-<#AQ> # Adaptability Quotient
-a schema:DefinedTerm ;
-schema:termCode "AQ" ;
-schema:name "Adaptability Quotient (AQ)" ;
-schema:description "It serves as a measure of an individual's capacity for successful transitions across different professional domains" ;
-schema:bestRating "100" .
-
-<#SMI> # Skill Maturity Index
-a schema:DefinedTerm ;
-schema:termCode "SMI" ;
-schema:name "Skill Maturity Index (SMI)" ;
-schema:description "It is a metric designed to track the depth and breadth of an individual's skills against the WorkDNA taxonomy's" ;
-schema:bestRating "100" .
-
-<#NDS> # Network Diversity Score
-a schema:DefinedTerm ;
-schema:termCode "NDS" ;
-schema:name "Network Diversity Score (NDS)" ;
-schema:description "It is a metric designed to quantify the breadth of high-value connections an individual possesses." ;
-schema:bestRating "100" .
-
-<#IRI> # Influence Reach Index
-a schema:DefinedTerm ;
-schema:termCode "IRI" ;
-schema:name "Influence Reach Index (IRI)" ;
-schema:description "It is a metric that measures an individual's impact beyond their immediate projects." ;
-schema:bestRating "100" .
-
-<#IAC> #  Impact-Adjusted Contribution
-a schema:DefinedTerm ;
-schema:termCode "IAC" ;
-schema:name " Impact-Adjusted Contribution (IAC)" ;
-schema:description "is a metric to quantifying the tangible results an individual produces." ;
-schema:bestRating "100" .
-
-<#SAR> # Strategic Alignment Ratio
-a schema:DefinedTerm ;
-schema:termCode "SAR" ;
-schema:name "Strategic Alignment Ratio (SAR)" ;
-schema:description "It tracks an individual's work toward high-value goals." ;
-schema:bestRating "100" .
-
-<#BETA> # Career Beta (β) Tracker
-a schema:DefinedTerm ;
-schema:termCode "BETA" ;
-schema:name "Career Beta (β) Tracker" ;
-schema:description "It measures an individual's alignment with high-growth skills and industries." ;
-schema:bestRating "100" .
-
-<#ORL> # Opportunity Readiness Level
-a schema:DefinedTerm ;
-schema:termCode "ORL" ;
-schema:name "Opportunity Readiness Level (ORL)" ;
-schema:description "It is designed to predict an individual's success in aspirational roles." ;
-schema:bestRating "100" .
-
-<#SJFA> # Skill-Job Fit Alignment
-a schema:DefinedTerm ;
-schema:termCode "SJFA" ;
-schema:name "Skill-Job Fit Alignment (SJFA)" ;
-schema:description "It measures engagement through competency utilization." ;
-schema:bestRating "100" .
-
-<#GSI> # Growth Sustainability Index
-a schema:DefinedTerm ;
-schema:termCode "GSI" ;
-schema:name "Growth Sustainability Index (GSI)" ;
-schema:description "It is designed to balance an individual's pace of development with their well-being." ;
-schema:bestRating "100" .
-```
-
-**Fields Description**
-
-Each indicator is represented using the same data structure described below:
-
-* **schema:termCode** - Acronym
-* **schema:name** - Name
-* **schema:description** - Description
-* **schema:bestRating** - Highest value
+* **schema:itemListElement** - List of URLs of each project
 
 ### .CCIH-Definitions.ttl
 
