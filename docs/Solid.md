@@ -7520,3 +7520,51 @@ Each indicator is represented using the same data structure described below:
 * **schema:ratingValue** - Attribute values
 * **schema:subjectOf** - Link to the memory file that last changed the attribute
 * **schema:validFrom** - Timestamp of the last change (Format: YYYY-MM-YYThhmmssZ)
+
+### PAI.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/chatAI
+
+**Description**
+
+This file stores the list of CHATs created by the user.
+
+**File Structure**
+
+```ttl title="PAI.ttl" linenums="1"
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+@prefix schema:  <http://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/chatAI/PAI.ttl>
+  a schema:CreativeWork ;
+  schema:hasPart </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/chatAI/a3932b42-f7d5-4ec2-b3f2-95a9dac0b06a.ttl> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/chatAI/a3932b42-f7d5-4ec2-b3f2-95a9dac0b06a.ttl>
+  a schema:Conversation ;
+  schema:dateCreated "2025-03-14T16:39:28Z"^^xsd:dateTime ;
+  schema:abstract "Experience exploration" ;
+  schema:keywords "career-guidance" ;
+  schema:creativeWorkStatus "Initiated" .
+```
+
+**Fields Description**
+
+* **schema:hasPart** - List of links to all chats created by the user
+* **schema:dateCreated** - Creation date timestamp (Format: YYYY-MM-DDThh:mm:ssZ)
+* **schema:abstract** - chat titles
+* **schema:keywords** - chat template. It can be one of the following values:
+    * **WorkDNA Analysis** - Get insights about your professional competencies and career alignment
+    * **Career Path Guidance** - Explore career opportunities and professional developmant strategies
+    * **Project Collaboration** - Get advice on team formation, project management and collaborative workflows
+    * **Learning & Development** - Personalized learning recommendations and skill development strategis
+    * **General Professional Assistant** - General professional advice and platform guidance
+    * **Career Interviewer** - Professional career interview to gather comprehensive information about your journey
+* **schema:creativeWorkStatus** - AI chat extraction process status. It can be one of the following values:        
+    * **Pending** - Chat was not sent to AI extraction process queue
+    * **Processing** - Chat was sent to AI extraction process queue
+    * **Finished** - Chat was processed by AI extraction process queue
