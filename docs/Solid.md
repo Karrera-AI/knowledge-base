@@ -7564,7 +7564,188 @@ This file stores the list of CHATs created by the user.
     * **Learning & Development** - Personalized learning recommendations and skill development strategis
     * **General Professional Assistant** - General professional advice and platform guidance
     * **Career Interviewer** - Professional career interview to gather comprehensive information about your journey
-* **schema:creativeWorkStatus** - AI chat extraction process status. It can be one of the following values:        
-    * **Pending** - Chat was not sent to AI extraction process queue
-    * **Processing** - Chat was sent to AI extraction process queue
-    * **Finished** - Chat was processed by AI extraction process queue
+* **schema:creativeWorkStatus** - AI chat status. It can be one of the following values:    
+   * **Initiated** - Chat was initiated
+
+### MSG.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/chatAI
+
+**Description**
+
+This file stores the content of the CHATs created by the user.
+
+**File Structure**
+
+```ttl title="MSG.ttl" linenums="1"
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+@prefix schema:  <http://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix usr:     <https://id.inrupt.com/karrera51> .
+@prefix ai:      <https://id.inrupt.com/KarreraAI> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/chatAI/a3932b42-f7d5-4ec2-b3f2-95a9dac0b06a.ttl>
+  a schema:Conversation ;
+  schema:abstract "Experience exploration" ;
+  schema:hasPart <#m0>, <#m1> , <#m2> .
+
+<#m0>
+  a schema:Message ;
+  schema:sender <ai:> ;
+  schema:recipient <usr:> ;
+  schema:datePublished "2025-03-14T16:40:08Z"^^xsd:dateTime ;
+  schema:text "Hi Silvia, can you tell us more about your experience in etnoarqueologia? What inspired you to pursue this field of study?" ;
+  schema:creativeWorkStatus "Pending" .
+
+<#m1>
+  a schema:Message ;
+  schema:sender <usr:> ;
+  schema:recipient <ai:> ;
+  schema:datePublished "2025-03-14T16:40:14Z"^^xsd:dateTime ;
+  schema:text "Working with Brazilian indian culture was always a fascinating subject" ;
+  schema:creativeWorkStatus "Pending" .
+
+<#m2>
+  a schema:Message ;
+  schema:sender <ai:> ;
+  schema:recipient <usr:> ;
+  schema:datePublished "2025-03-14T16:40:20Z"^^xsd:dateTime ;
+  schema:text "It sounds like your work with Brazilian indigenous cultures has been a significant part of your etnoarqueologia research. Have you had the opportunity to collaborate with indigenous communities directly in your research, or is your work more focused on analyzing and interpreting existing data?" ;
+  schema:creativeWorkStatus "Pending" .
+```
+
+**Fields Description**
+
+* **schema:hasPart** - List of links to all messages created by the user
+* **schema:sender** - Sender WebID
+* **schema:recipient** - Recipient WebID
+* **schema:datePublished** - Publushing date timestamp (Format: YYYY-MM-DDThh:mm:ssZ)
+* **schema:text** - Message content
+* **schema:creativeWorkStatus** - Message status. It can be one of the following values:
+    * **Pending** - Message was not sent to AI extraction process queue
+    * **Processing** - Message was sent to AI extraction process queue
+    * **Finished** - Message was processed by AI extraction process
+
+### PI-history.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/personas/main
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="PI-History.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
+
+### PI.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/personas/main
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="PI.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
+
+### item.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/narrative/item/<status>
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="item.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
+
+### organization.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/relationship/organization
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="organization.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
+
+### person.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/relationship/person
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="person.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
+
+### project.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/relationship/project
+
+**Description**
+
+This file description.
+
+**File Structure**
+
+```ttl title="project.ttl" linenums="1"
+  schema
+```
+
+**Fields Description**
+
+* **schema:hasPart** - 
