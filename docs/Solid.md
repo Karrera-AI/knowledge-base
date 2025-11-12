@@ -7676,19 +7676,47 @@ This file description.
 
 <User's POD>/KarreraAI/narrative/item/<status>
 
+The item is stored in a differente folder depending on its status. It can be oen of the following:
+    * **approved** - Items that are waiting for revision/approval
+    * **discarded** - Items that were discarded
+    * **pending** - Items approved. They are now part of Long-term memories
+
 **Description**
 
-This file description.
+This file is used to store a memory item. The content of the item file is a small set of a **PI.ttl** file
 
 **File Structure**
 
 ```ttl title="item.ttl" linenums="1"
-  schema
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix esco:       <http://data.europa.eu/esco/model#> .
+@prefix schema:     <http://schema.org/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix pi:         </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/narrative/item/pending/11c741e6-3f7c-4919-9334-8d3118ae6bec.ttl#> .
+
+<https://id.inrupt.com/futika>
+        a                     schema:Person; 
+        schema:hasCredential  <#2859d4d6-0404-4f0c-9b8e-96478c043075> .
+
+<#2859d4d6-0404-4f0c-9b8e-96478c043075>
+        a                           esco:Qualification , schema:EducationalOccupationalCredential;
+        schema:additionalProperty  [ a              schema:PropertyValue;
+                                     schema:name:   "Nivel de Conhecimento";
+                                     schema:value:  "1"
+                                   ];
+        schema:educationalLevel    "Bachelor degree" ;
+        schema:startDate           "2001"^^xsd:date ;
+        schema:endDate             "2005"^^xsd:date ;
+        schema:recognizedBy        "UC Berkeley" ;
+        schema:name                "Economics";
+        schema:subjectOf           </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/narrative/item/pending/11c741e6-3f7c-4919-9334-8d3118ae6bec.ttl>;
+        schema:status              "pending" .
 ```
 
 **Fields Description**
 
-* **schema:hasPart** - 
+Since the item is a small set of a PI.ttl file, the content is explained on PI.ttl section.
 
 ### organization.ttl
 
@@ -7698,17 +7726,28 @@ This file description.
 
 **Description**
 
-This file description.
+This file is used to store Organization information.
 
 **File Structure**
 
 ```ttl title="organization.ttl" linenums="1"
-  schema
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+@prefix schema:  <http://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/organization/99480e94-308a-4fb4-a128-61c3b79adfa0.ttl>
+        a                     schema:Organization ;
+        
+        schema:id             "99480e94-308a-4fb4-a128-61c3b79adfa0" ;
+        schema:legalName      "Saint Paul Escola de Negócios" .
 ```
 
 **Fields Description**
 
-* **schema:hasPart** - 
+* **schema:id** - Organization ID. It is a UUID to guarantee the id is unique
+* **schema:legalName** - Organization legal name
 
 ### person.ttl
 
@@ -7718,17 +7757,26 @@ This file description.
 
 **Description**
 
-This file description.
+This file is used to store Person information. It can be a small PI.ttl.
 
 **File Structure**
 
 ```ttl title="person.ttl" linenums="1"
-  schema
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix esco:    <http://data.europa.eu/esco/model#> .
+@prefix schema:  <http://schema.org/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/person/fdad4928-35a7-45dd-ae24-198bd8264b45.ttl>
+        a                     schema:Person ;
+        schema:id             "fdad4928-35a7-45dd-ae24-198bd8264b45" ;
+        schema:name           "Ester Lima" .
 ```
 
 **Fields Description**
 
-* **schema:hasPart** - 
+* **schema:id** - Person ID. It is a UUID to guarantee the id is unique
+* **schema:name** - Person name
 
 ### project.ttl
 
@@ -7738,14 +7786,19 @@ This file description.
 
 **Description**
 
-This file description.
+This file is used to store projects information.
 
 **File Structure**
 
+
 ```ttl title="project.ttl" linenums="1"
-  schema
+
+  The file format is under contruction
+
 ```
 
 **Fields Description**
 
-* **schema:hasPart** - 
+!!! note "Under Construction"
+
+    File content is Under Construction
