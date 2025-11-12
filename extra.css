@@ -1,5 +1,5 @@
-pre code {
-    max-height: 50px;
+.md-typeset pre > code {
+    max-height: 5rem;
     overflow-y: auto;
     display: block;
 }
