@@ -1,4 +1,5 @@
-.md-typeset pre code {
-    max-height: 100px;
+pre code {
+    max-height: 50px;
     overflow-y: auto;
+    display: block;
 }
