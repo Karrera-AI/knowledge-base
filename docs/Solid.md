@@ -7922,7 +7922,6 @@ a       skos:Concept , esco:Occupation ;
 **Fields Description**
 
 * **Core Personal Information:**
-
     * **schema:id** - Unique identifier for the persona
     * **schema:name** - Full name of the person
     * **schema:birthDate** - Date of birth (YYYY-MM-DD format)
@@ -7932,35 +7931,34 @@ a       skos:Concept , esco:Occupation ;
     * **schema:sameAs** - Link to WorkDNA data file
     * **schema:identifier** - Link to CCIH indicators file
 
+
 * **Location Information:**
-
     * **schema:address** - Reference to postal address object containing:
-
         * **schema:addressCountry** - Country name
         * **schema:addressLocality** - City name
         * **schema:addressRegion** - State/region name
         * **schema:validFrom** - Timestamp when address became valid (YYYY-MM-DDThh:mm:ssZ format)
 
-* **Professional Information:**
 
+* **Professional Information:**
     * **schema:jobTitle** - Current occupation (linked to detailed occupation object)
     * **schema:hasOccupation** - Previous employment history (multiple entries linked to detailed occupation object)
     * **schema:hasCredential** - Educational qualifications and certifications
     * **schema:workExample** - Portfolio items including projects, publications, and creative works (Creative works use appropriate schema.org types: MusicAlbum, Article, Book, etc.)
     * **schema:award** - Honors and recognitions received
 
-* **Skills & Knowledge:**
 
+* **Skills & Knowledge:**
     * **schema:knowsLanguage** - Language proficiencies with skill levels
     * **schema:knowsAbout** - Skills, hobbies, and interests
     * **schema:description** - Biography and professional summary
 
-* **Social & Network Data:**
 
+* **Social & Network Data:**
     * **schema:knows** - Links to person and organization indexes (.person-index.ttl and .organization-index.ttl)
 
+
 * **System Integration:**
-    
     * **schema:subjectOf** - References to narrative memory files throughout (provides audit trail)
     * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
