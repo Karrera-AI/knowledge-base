@@ -7923,6 +7923,7 @@ a       skos:Concept , esco:Occupation ;
 
 #### Core Personal Information
 
+* **schema:Person** - Item type
 * **schema:id** - Unique identifier for the persona
 * **schema:name** - Full name of the person
 * **schema:birthDate** - Date of birth (YYYY-MM-DD format)
@@ -7935,6 +7936,7 @@ a       skos:Concept , esco:Occupation ;
 
 #### Location Information
 * **schema:address** - Reference to postal address object containing:
+    * **schema:PostalAddress** - Item type
     * **schema:addressCountry** - Country name
     * **schema:addressLocality** - City name
     * **schema:addressRegion** - State/region name
@@ -7946,6 +7948,7 @@ a       skos:Concept , esco:Occupation ;
 * **schema:hasOccupation** - Previous employment history (multiple entries linked to detailed occupation object)
 
     * **Occupation Object**
+        * **skos:Concept , esco:Occupation** - Item types
         * **schema:name** - This name is how the occupation was found in user documentation
         * **schema:id** - Occupation id from Karrera Ontology
         * **skos:prefLabel** - Occupation name found in Karrera Ontology
@@ -7959,6 +7962,7 @@ a       skos:Concept , esco:Occupation ;
 * **schema:hasCredential** - Educational qualifications and certifications (multiple entries linked to detailed Educationa Credential object)
 
     * **Occupation Object**
+        * **schema:EducationalOccupationalCredential , esco:Qualification** - Item types
         * **schema:educationalLevel** - Credential level (Bachelor degree, Master degree, Technical Course and etc)
         * **schema:startDate** - Credential start date (YYYY-MM-DD format)
         * **schema:endDate** - Credential end date (YYYY-MM-DD format)
@@ -7970,6 +7974,7 @@ a       skos:Concept , esco:Occupation ;
 * **schema:workExample** - Portfolio items including projects, publications, and creative works (Creative works use appropriate schema.org types: MusicAlbum, Article, Book, etc.)
 
     * **MusicAlbum**
+        * **schema:MusicAlbum** - Item type
         * **schema:author** - Music Album author name
         * **schema:name** - Music Album name
         * **schema:dateCreated** - Music Album creation date (YYYY-MM-DD format)
@@ -7977,6 +7982,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
     
     * **MusicRecording**
+        * **schema:MusicRecording** - Item type
         * **schema:author** - Link to Music author WebID
         * **schema:name** - Music name
         * **schema:inAlbum** - Link to Music's album
@@ -7985,6 +7991,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Season**
+        * **schema:Season** - Item type
         * **schema:author** - Link to Season author WebID
         * **schema:name** - Season name
         * **schema:dateCreated** - Season creation date (YYYY-MM-DD format)
@@ -7992,6 +7999,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Movie**
+        * **schema:Movie** - Item type
         * **schema:author** - Link to Movie author WebID
         * **schema:name** - Movie name
         * **schema:dateCreated** - Movie creation date (YYYY-MM-DD format)
@@ -7999,6 +8007,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Episode**
+        * **schema:Episode** - Item type
         * **schema:author** - Link to Episode author WebID
         * **schema:name** - Episode name
         * **schema:dateCreated** - Episode creation date (YYYY-MM-DD format)
@@ -8006,6 +8015,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **PodcastEpisode**
+        * **schema:PodcastEpisode** - Item type
         * **schema:author** - Link to Podcast Episode author WebID
         * **schema:name** - Podcast Episode name
         * **schema:episodeNumber** - Podcast Episode number
@@ -8015,6 +8025,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Article**
+        * **schema:Article** - Item type
         * **schema:author** - Link to author WebID
         * **schema:name** - Article name
         * **schema:url** - Link to Article URL
@@ -8023,6 +8034,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Book**
+        * **schema:Book** - Item type
         * **schema:author** - Book author
         * **schema:name** - Book name
         * **schema:isbn** - Book ISBN
@@ -8031,7 +8043,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 * **schema:award** - Honors and recognitions received
-
+    * **esco:Qualification , schema:Text** - Item types
     * **:name** - Award name
     * **schema:recognizedBy** - Link to organization which recognized it
     * **schema:dateCreated** - Date when the award was received (YYYY-MM-DD format)
@@ -8070,16 +8082,13 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
     * **Hobbies**
+        * **schema:Thing**  - Item type
         * **schema:alternateType** - It is always "Hobbies"
         * **schema:name** - Hobby name
         * **schema:subjectOf** - References to narrative memory files (provides audit trail)
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
     
     * **Interests**
-        * **schema:alternateType** - It is always "Hobbies"
-        * **schema:name** - Hobby name
-        * **schema:subjectOf** - References to narrative memory files (provides audit trail)
-        * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
         * **schema:Thing** - Item type
         * **schema:alternateType** - It is Always "Interests"
         * **schema:name** - Interest name
@@ -8087,7 +8096,6 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 * **schema:description** - Biography and professional summary
-
     * **schema:Text** - Item type
     * **schema:alternateName** - It is always "Biography"
     * **schema:text** - Biography text
