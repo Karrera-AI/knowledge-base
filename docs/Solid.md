@@ -7921,7 +7921,7 @@ a       skos:Concept , esco:Occupation ;
 
 **Fields Description**
 
-#### Core Personal Information:**
+#### Core Personal Information
     * **schema:id** - Unique identifier for the persona
     * **schema:name** - Full name of the person
     * **schema:birthDate** - Date of birth (YYYY-MM-DD format)
@@ -7932,7 +7932,7 @@ a       skos:Concept , esco:Occupation ;
     * **schema:identifier** - Link to CCIH indicators file (CCIH.ttl)
 
 
-* **Location Information:**
+#### Location Information
     * **schema:address** - Reference to postal address object containing:
         * **schema:addressCountry** - Country name
         * **schema:addressLocality** - City name
@@ -7940,7 +7940,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp when address became valid (YYYY-MM-DDThh:mm:ssZ format)
 
 
-* **Professional Information:**
+#### Professional Information
     * **schema:jobTitle** - Current occupation (linked to detailed occupation object)
     * **schema:hasOccupation** - Previous employment history (multiple entries linked to detailed occupation object)
 
@@ -8038,7 +8038,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 
-* **Skills & Knowledge:**
+#### Skills & Knowledge
     * **schema:knowsLanguage** - Language proficiencies with skill levels
 
         * **schema:Language** - Item type
@@ -8094,7 +8094,7 @@ a       skos:Concept , esco:Occupation ;
         * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 
-* **Social & Network Data:**
+#### Social & Network Data
     * **schema:knows** - Links to person and organization indexes (.person-index.ttl and .organization-index.ttl)
 
 
