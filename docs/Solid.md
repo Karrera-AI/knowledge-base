@@ -7921,7 +7921,7 @@ a       skos:Concept , esco:Occupation ;
 
 **Fields Description**
 
-* **Core Personal Information:**
+#### Core Personal Information:**
     * **schema:id** - Unique identifier for the persona
     * **schema:name** - Full name of the person
     * **schema:birthDate** - Date of birth (YYYY-MM-DD format)
