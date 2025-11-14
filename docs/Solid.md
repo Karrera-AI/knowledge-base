@@ -663,6 +663,48 @@ Each indicator is represented using the same data structure described below:
 * **schema:description** - Description
 * **schema:bestRating** - Highest value
 
+### CCIH-history.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/personas/main
+
+**Description**
+
+This file is used to store historical data from CCIH.ttl. It is used to build a CCIH evolution timeline. The content follows the CCIH.ttl structure with some additional properties.
+
+**File Structure**
+
+```ttl title="PI-History.ttl" linenums="1"
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix esco:       <http://data.europa.eu/esco/model#> .
+@prefix schema:     <http://schema.org/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix ccih:       </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/.system/CCIH-Definitions.ttl>
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/persona1/CCIH.ttl>
+    a schema:DefinedTermSet ;
+
+    # Adaptability Quotient (AQ)
+    schema:hasDefinedTerm [
+        a schema:DefinedTermSet ;
+        schema:inDefinedTermSet <ccih:#AQ> ;
+        schema:termCode "AQ" ;
+        schema:ratingValue "10%" ;
+        schema:subjectOf    </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/narrative/memory/longterm/79a65b9a-7bd2-4605-ac8e-6a89d8ff720a.ttl> ;
+        schema:validFrom    "2025-04-24T153045Z"^^xsd:dateTime ;
+        schema:validUntil "2025-08-08T12:00:00.000Z"^^xsd:dateTime
+    ] .
+```
+
+**Fields Description**
+
+Two new properties should be added to every historical section as per description below.
+
+* **schema:validFrom** - This date is used to set the initial vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
+* **schema:validUntil** - This date is used to set the final vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
+
 ### CCIH.ttl
 
 **File Location**
@@ -4055,6 +4097,49 @@ Each of the 312 attrubutes is represented using the same data structure describe
 * **schema:name** - Name
 * **schema:description** - Description
 * **schema:bestRating** - Highest value
+
+### WorkDNA-history.ttl
+
+**File Location**
+
+<User's POD>/KarreraAI/personas/main
+
+**Description**
+
+This file is used to store historical data from WorkDNA.ttl. It is used to build a WorkDNA evolution timeline. The content follows the WorkDNA.ttl structure with some additional properties.
+
+**File Structure**
+
+```ttl title="PI-History.ttl" linenums="1"
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix esco:       <http://data.europa.eu/esco/model#> .
+@prefix schema:     <http://schema.org/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix dna:        </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/.system/WorkDNA-Definitions.ttl>
+
+</a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/persona1/WorkDNA.ttl>
+    a schema:DefinedTermSet ;
+
+    # K101a01 - Information Ordering
+    schema:hasDefinedTerm [
+        a schema:DefinedTermSet ;
+        schema:inDefinedTermSet <dna:#K101a01> ;
+		schema:termCode "K101a01" ;
+        schema:ratingValue "0" ;
+		schema:subjectOf    </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/narrative/memory/longterm/79a65b9a-7bd2-4605-ac8e-6a89d8ff720a.ttl> ;
+		schema:validFrom "2025-04-23T153045Z"^^xsd:dateTime ;
+        schema:validUntil "2025-08-08T12:00:00.000Z"^^xsd:dateTime ;
+        schema:status   "not validated"
+    ] .
+```
+
+**Fields Description**
+
+Two new properties should be added to every historical section as per description below.
+
+* **schema:validFrom** - This date is used to set the initial vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
+* **schema:validUntil** - This date is used to set the final vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
 
 ### WorkDNA.ttl
 
@@ -7520,6 +7605,7 @@ Each indicator is represented using the same data structure described below:
 * **schema:ratingValue** - Attribute values
 * **schema:subjectOf** - Link to the memory file that last changed the attribute
 * **schema:validFrom** - Timestamp of the last change (Format: YYYY-MM-YYThhmmssZ)
+* **schema:status** - Indicates if the indicator was validated or not. It can be: "validated" or "not validated"
 
 ### PAI.ttl
 
@@ -7638,17 +7724,41 @@ This file stores the content of the CHATs created by the user.
 
 **Description**
 
-This file description.
+This file is used to store historical data from PI.ttl. It is used to build a PI evolution timeline. The content follows the PI.ttl structure with some additional properties.
 
 **File Structure**
 
 ```ttl title="PI-History.ttl" linenums="1"
-  schema
+@prefix dcterms:    <http://purl.org/dc/terms/> .
+@prefix esco:       <http://data.europa.eu/esco/model#> .
+@prefix schema:     <http://schema.org/> .
+@prefix skos:       <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
+@prefix pi:         </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/personas/persona1/PI.ttl#> .
+
+<https://id.inrupt.com/futika>
+        a                     schema:Person.
+
+<#21222.0.0039>
+        a                 skos:Concept , esco:Occupation;
+        schema:name       "Senior Project Manager" ;
+        schema:startDate  "2015"^^xsd:date ;
+        schema:endDate    "2020"^^xsd:date ;
+        schema:worksFor   "SocialTech Inc." ;
+        schema:url        <https://noc.esdc.gc.ca/OaSIS/OaSISOccProfile?code=21222.00&version=2023.0> ;
+        schema:subjectOf  </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/narrative/item/approved/23648efe-cefa-400a-8f0f-93aa544f1694.ttl> ;
+        schema:validFrom  "2025-04-27T12:00:00.000Z"^^xsd:dateTime ;
+        schema:validUntil "2025-08-08T12:00:00.000Z"^^xsd:dateTime ;
+        skos:prefLabel    "Technical Project Manager" .
 ```
 
 **Fields Description**
 
-* **schema:hasPart** - 
+Two new properties should be added to every historical section as per description below.
+
+* **schema:validFrom** - This date is used to set the initial vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
+* **schema:validUntil** - This date is used to set the final vadid date for the data (Format YYYY-MM-DDThh:mm:ssZ)
+
 
 ### PI.ttl
 
