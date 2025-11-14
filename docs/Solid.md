@@ -7926,10 +7926,10 @@ a       skos:Concept , esco:Occupation ;
     * **schema:name** - Full name of the person
     * **schema:birthDate** - Date of birth (YYYY-MM-DD format)
     * **schema:email** - Primary email address
-    * **schema:taxID** - Tax identification number type. (In Brazil we will use CPF)
+    * **schema:taxID** - Tax identification number (In Brazil we will use CPF)
     * **schema:image** - Link to profile avatar image
-    * **schema:sameAs** - Link to WorkDNA data file
-    * **schema:identifier** - Link to CCIH indicators file
+    * **schema:sameAs** - Link to WorkDNA data file (workDNA.ttl)
+    * **schema:identifier** - Link to CCIH indicators file (CCIH.ttl)
 
 
 * **Location Information:**
@@ -7943,24 +7943,160 @@ a       skos:Concept , esco:Occupation ;
 * **Professional Information:**
     * **schema:jobTitle** - Current occupation (linked to detailed occupation object)
     * **schema:hasOccupation** - Previous employment history (multiple entries linked to detailed occupation object)
-    * **schema:hasCredential** - Educational qualifications and certifications
+
+        * **Occupation Object**
+            * **schema:name** - This name is how the occupation was found in user documentation
+            * **schema:id** - Occupation id from Karrera Ontology
+            * **skos:prefLabel** - Occupation name found in Karrera Ontology
+            * **schema:startDate** - Occupation start date (YYYY-MM-DD format)
+            * **schema:endDate** - Occupation end date (YYYY-MM-DD format)
+            * **schema:worksFor** - Link to organization TTL file
+            * **schema:description** - User occupation accomplishments
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+    * **schema:hasCredential** - Educational qualifications and certifications (multiple entries linked to detailed Educationa Credential object)
+
+        * **Occupation Object**
+            * **schema:educationalLevel** - Credential level (Bachelor degree, Master degree, Technical Course and etc)
+            * **schema:startDate** - Credential start date (YYYY-MM-DD format)
+            * **schema:endDate** - Credential end date (YYYY-MM-DD format)
+            * **schema:recognizedBy** - Link to organization TTL file
+            * **schema:name** - Credential name
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
     * **schema:workExample** - Portfolio items including projects, publications, and creative works (Creative works use appropriate schema.org types: MusicAlbum, Article, Book, etc.)
+
+        * **MusicAlbum**
+            * **schema:author** - Music Album author name
+            * **schema:name** - Music Album name
+            * **schema:dateCreated** - Music Album creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+        
+        * **MusicRecording**
+            * **schema:author** - Link to Music author WebID
+            * **schema:name** - Music name
+            * **schema:inAlbum** - Link to Music's album
+            * **schema:dateCreated** - Music Recording creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Season**
+            * **schema:author** - Link to Season author WebID
+            * **schema:name** - Season name
+            * **schema:dateCreated** - Season creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Movie**
+            * **schema:author** - Link to Movie author WebID
+            * **schema:name** - Movie name
+            * **schema:dateCreated** - Movie creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Episode**
+            * **schema:author** - Link to Episode author WebID
+            * **schema:name** - Episode name
+            * **schema:dateCreated** - Episode creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **PodcastEpisode**
+            * **schema:author** - Link to Podcast Episode author WebID
+            * **schema:name** - Podcast Episode name
+            * **schema:episodeNumber** - Podcast Episode number
+            * **schema:url** - Link to Podcast Episode link
+            * **schema:dateCreated** - Podcast Episode creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Article**
+            * **schema:author** - Link to author WebID
+            * **schema:name** - Article name
+            * **schema:url** - Link to Article URL
+            * **schema:dateCreated** - Article creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Book**
+            * **schema:author** - Book author
+            * **schema:name** - Book name
+            * **schema:isbn** - Book ISBN
+            * **schema:dateCreated** - Book creation date (YYYY-MM-DD format)
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
     * **schema:award** - Honors and recognitions received
+
+        * **:name** - Award name
+        * **schema:recognizedBy** - Link to organization which recognized it
+        * **schema:dateCreated** - Date when the award was received (YYYY-MM-DD format)
+        * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+        * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 
 * **Skills & Knowledge:**
     * **schema:knowsLanguage** - Language proficiencies with skill levels
+
+        * **schema:Language** - Item type
+        * **schema:name** - Language name
+        * **schema:additionalProperty**
+            * **schema:PropertyValue** - Item type
+            * **schema:name** - Propoerty is always "Proficience Level"
+            * **schema:value** - Proficiency Level
+
     * **schema:knowsAbout** - Skills, hobbies, and interests
+
+        * **Skills**
+            * **skos:Concept , esco:Skill** - Item types
+            * **schema:proficiencyLevel** - Skill proficiency level
+            * **schema:alternateType** - Skill type. It can be one of the following:
+                * **Knowledge** - What you know—facts, concepts, and theoretical understanding
+                * **Skills** - What you can do—technical, practical, and learned proficiencies
+                * **Abilities** - What you can do—technical, practical, and learned proficiencies
+                * **Personal Attributes** - Who you are—traits like resilience, empathy, and adaptability
+                * **Interests** - What drives you—passions, curiosities, and motivations
+                * **Work Context** - Where you operate—environments, roles, and organizational settings
+                * **Work Activities** - What you do—tasks, responsibilities, and day-to-day actions
+            * **schema:startDate** - Date when skill was acquired (Format: YYYY-MM-DD)
+            * **schema:name** - Skill name. It should be how the knowledge was found in user documentation
+            * **skos:prefLabel** - Skill name in Karrera Ontology
+            * **schema:id** - ID from Karrera Ontology
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
+        * **Hobbies**
+            * **schema:alternateType** - It is always "Hobbies"
+            * **schema:name** - Hobby name
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+        
+        * **Interests**
+            * **schema:alternateType** - It is always "Hobbies"
+            * **schema:name** - Hobby name
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+            * **schema:Thing** - Item type
+            * **schema:alternateType** - It is Always "Interests"
+            * **schema:name** - Interest name
+            * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+            * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
+
     * **schema:description** - Biography and professional summary
+
+        * **schema:Text** - Item type
+        * **schema:alternateName** - It is always "Biography"
+        * **schema:text** - Biography text
+        * **schema:subjectOf** - References to narrative memory files (provides audit trail)
+        * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 
 * **Social & Network Data:**
     * **schema:knows** - Links to person and organization indexes (.person-index.ttl and .organization-index.ttl)
 
-
-* **System Integration:**
-    * **schema:subjectOf** - References to narrative memory files throughout (provides audit trail)
-    * **schema:validFrom** - Timestamp of last update (Format: YYYY-MM-DDThhmmssZ)
 
 ### item.ttl
 
