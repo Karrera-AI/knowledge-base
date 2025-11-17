@@ -13,3 +13,7 @@ Create your project doc page in doc/ directory.
         index.md  # The documentation homepage.
         ...       # Other markdown pages.
         assets/   # icons, images and files.
+
+## General architecture
+
+![image info](./assets/karrera_backend.drawio.png)
