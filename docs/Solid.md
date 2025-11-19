@@ -261,6 +261,7 @@ This file stores a list of working memories generated for the user. Each entry r
 
 <#4c5cc5d2-63fe-4554-a17f-b68403573f43>
     a schema:action ;
+    schema:name         "Memory Name" ;
     schema:instrument   "CV Scrapping Agent" ;
     schema:target       </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/FileName> ,
                         "Text extracted from source data that was used to generate this memory" ;
@@ -273,6 +274,7 @@ This file stores a list of working memories generated for the user. Each entry r
 
 **Fields Description**
 
+* **schema:name** - It is the memory source name. It can be a filename, a chat name or a scrape json file.
 * **schema:instrument** - It is the agent that is generating the memory
 * **schema:target** - This is a list of 2 information. The first information is the URL of the file used during the process. The second information source text, extracted from the document, that is used on the process
 * **schema:endTime** - Timestamp indicating when the process was completed (Format: YYYY-MM-DDThhmmssZ)
@@ -304,6 +306,7 @@ This file stores a list of discarded memories indicated by the user. Each entry 
 
 <#4c5cc5d2-63fe-4554-a17f-b68403573f43>
     a schema:action ;
+    schema:name         "Memory Name" ;
     schema:instrument   "CV Scrapping Agent" ;
     schema:target       </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/FileName> ,
                         "Text extracted from source data that was used to generate this memory" ;
@@ -316,6 +319,7 @@ This file stores a list of discarded memories indicated by the user. Each entry 
 
 **Fields Description**
 
+* **schema:name** - It is the memory source name. It can be a filename, a chat name or a scrape json file.
 * **schema:instrument** - It is the agent that is generating the memory
 * **schema:target** - This is a list of 2 information. The first information is the URL of the file used during the process. The second information source text, extracted from the document, that is used on the process
 * **schema:endTime** - Timestamp indicating when the process was completed (Format: YYYY-MM-DDThhmmssZ)
@@ -347,6 +351,7 @@ This file stores a list of long-term memories accepted by the user. Each entry r
 
 <#4c5cc5d2-63fe-4554-a17f-b68403573f43>
     a schema:action ;
+    schema:name         "Memory Name" ;
     schema:instrument   "CV Scrapping Agent" ;
     schema:target       </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/artifacts/FileName> ,
                         "Text extracted from source data that was used to generate this memory" ;
@@ -359,6 +364,7 @@ This file stores a list of long-term memories accepted by the user. Each entry r
 
 **Fields Description**
 
+* **schema:name** - It is the memory source name. It can be a filename, a chat name or a scrape json file.
 * **schema:instrument** - It is the agent that is generating the memory
 * **schema:target** - This is a list of 2 information. The first information is the URL of the file used during the process. The second information source text, extracted from the document, that is used on the process
 * **schema:endTime** - Timestamp indicating when the process was completed (Format: YYYY-MM-DDThhmmssZ)
