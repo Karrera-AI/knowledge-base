@@ -123,6 +123,8 @@
 			-e CSS_HTTPS_KEY=/certificates/privkey.pem \
 			-e CSS_HTTPS_CERT=/certificates/fullchain.pem \
 			css-server:1.0.3
+			
+	4.8 Create karreraai WebID
 
 5 Set Cloudrun CD for all micro services
 	
