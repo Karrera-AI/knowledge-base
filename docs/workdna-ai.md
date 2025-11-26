@@ -694,19 +694,19 @@ The **WorkDNA Ontology Service** is the core component that bridges the structur
 
 At its core, our WorkDNA ontology defines a taxonomy of professional identity, organized into seven primary node types:
 
-Skill – practical competencies (e.g., Python programming, financial modeling).
+1. **Skills** – Developed capabilities that an individual must have to be effective in a job, role, function, task or duty (e.g., Python programming, financial modeling).
 
-Knowledge – theoretical or domain-specific expertise (e.g., statistics, constitutional law).
+2. **Knowledges** – Organized sets of principles and practices used for the execution of tasks and activities within a particular domain (e.g., statistics, constitutional law).
 
-Attribute – inherent traits or characteristics (e.g., adaptability, critical thinking).
+3. **Personal Attributes** – Personal characteristics that are innate and developed through the social context and personal experiences to which the individual is exposed. These qualities influence the way one is and does things and are considered valuable assets for work performance (e.g., adaptability, critical thinking).
 
-Ability – broader capacities that enable action (e.g., problem-solving, systems thinking).
+4. **Abilities** – Innate and developed aptitudes that facilitate the acquisition of knowledge and skills to carry out expected work (e.g., problem-solving, systems thinking).
 
-Motivation – drivers of behavior and preferences (e.g., curiosity, achievement orientation).
+5. **Motivations/Interests** – Preferences for work environments and outcomes (e.g., curiosity, achievement orientation).
 
-Context – environments or conditions where capabilities are applied (e.g., startup setting, regulated industries).
+6. **Work Contexts** – Physical, environmental, and social factors that influence the nature of work (e.g., startup setting, regulated industries).
 
-Activity – concrete tasks or roles performed (e.g., debugging code, conducting interviews).
+7. **Work Activities** – General types of work-related activities (e.g., debugging code, conducting interviews).
 
 Each node is defined not only by its label but also by its relationships to other nodes, making the ontology a connected structure rather than a flat hierarchy.
 

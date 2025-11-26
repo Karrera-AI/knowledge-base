@@ -6,6 +6,7 @@ This document walks through how we generate sentence embeddings using Sentence-B
 Right now, we have been using SBERT to capture the semantic meaning of:
 * ***Capabilities***
 * ***Paths Descriptions***
+
 And we use a normal embeddings for the:
 * ***Paths WORKDNAs***
 
@@ -88,6 +89,13 @@ We encode **only the occupation description**, all in lowercase.
 
 ## 3. **CHROMADB SETUP**
 We interact with ChromaDB via **HTTP client**.
+
+We use the `chromadb` library:
+
+```bash
+pip install chromadb
+```
+
 
 ### **Client Creation**
 All configuration values (hosts, ports, authentication, collection names) are stored securely in `.env` files and cloud secrets.
