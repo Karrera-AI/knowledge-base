@@ -126,6 +126,52 @@
 			
 	4.8 Create karreraai WebID
 
+	4.9 Configure Pod Data Backup
+
+		4.9.1 Create Backup data folder
+
+			mkdir /Backup-PodData
+
+		4.9.2 Create Backup Bucket
+
+		4.9.3 Allow Default GCP Service account to be Storage Admin
+
+		4.9.4 Create script to Backup Pod Data and copy it to backup Bucket (/Backup-PodData/backup-poddata.sh)
+
+			#!/bin/bash
+
+			# Source and destination directories
+			SRC="/PodData"
+			DEST="/Backup-PodData"
+			
+			# Create destination directory if it doesn't exist
+			mkdir -p "$DEST"
+			
+			# Generate date-based filename
+			DATE=$(date +%Y-%m-%d)
+			FILENAME="PodData-$DATE.tar.gz"
+			
+			# Create the tar.gz archive
+			tar -czf "$DEST/$FILENAME" -C "$SRC" .
+			
+			# Copy file to Backup Bucket
+			gsutil cp $DEST/$FILENAME gs://karrera-backup-bucket/CSS-Backup
+			
+			# Optional: print a message (useful for logs)
+			echo "Backup created: $DEST/$FILENAME"
+
+		4.9.5 Allow script to be executable
+
+			chmod +x /Backup-PodData/backup-poddata.sh
+
+		4.9.6 Insert command in root crontab to execute backup every day at 4:00AM
+
+			sudo su
+			cronta -e
+			Insert line below:
+				0 4 * * * docker stop css-server && /Backup-PodData/backup-poddata.sh && docker start css-server
+		
+
 5 Set Cloudrun CD for all micro services
 	
   5.1 Deploy Karrera-backend
