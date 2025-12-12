@@ -117,6 +117,7 @@
 			--restart always \
 			-v /PodData:/data \
 			-v /etc/letsencrypt/archive/css.karrera.ai:/certificates \
+			-e NODE_OPTIONS="--max-old-space-size=4096" \
 			-e CSS_ROOT_FILE_PATH=/data \
 			-e CSS_CONFIG=config/karrera.json \
 			-e CSS_BASE_URL=https://css.karrera.ai/ \
