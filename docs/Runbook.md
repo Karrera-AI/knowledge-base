@@ -8,6 +8,67 @@
 
 3 Deploy Solid server in VM
 
+	3.1 Install Docker: (https://docs.docker.com/engine/install/debian/)
+
+		3.1.1 Add Docker's official GPG key:
+		
+			sudo apt update
+			sudo apt install ca-certificates curl
+			sudo install -m 0755 -d /etc/apt/keyrings
+			sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+			sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+		3.1.2 Add the repository to Apt sources:
+		
+			sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+			Types: deb
+			URIs: https://download.docker.com/linux/debian
+			Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+			Components: stable
+			Signed-By: /etc/apt/keyrings/docker.asc
+			EOF
+
+		3.1.3 Update and Install Docker
+		
+			sudo apt update
+			sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+	3.2 Pull and run Solid server image
+
+		3.2.1 Authenticate Docker to use Google Container Registry
+		
+			```bash
+			gcloud auth configure-docker
+			```
+
+		3.2.2 Setup docker-compose.yml file (/opt/solid-crud/docker-compose.yml)
+		
+			```yaml
+				services:
+				solid-crud:
+					image: us-central1-docker.pkg.dev/nossaia/solid-crud/solid-crud:alpha
+					container_name: solid-crud
+					restart: unless-stopped
+					ports:
+						- "80:80"
+						- "443:443"
+					volumes:
+						- /etc/letsencrypt:/etc/letsencrypt
+			```
+
+		3.2.3 Set enviroment variables in docker-compose.override.yml (/opt/solid-crud/docker-compose.override.yml)
+		
+			```yaml
+					environment:
+						SECRET_VERSION: "projects/79811639884/secrets/Solid-Secrets/versions/1"
+						DOMAIN_NAME: "solid.karrera.ai"
+						TAXONOMY_SERVICE_HOST: "https://karrera-backend-79811639884.us-east1.run.app"
+						ONTOLOGY_SERVICE_HOST: "https://workdna-ai-79811639884.us-east1.run.app"
+						BIO_SERVICE_HOST: "https://biography-api-79811639884.us-east1.run.app"
+						QUEUE_PUBLISHER_SERVICE_HOST: "https://queuepublisher-79811639884.us-east1.run.app"
+			```
+
+
 4 Deploy CSS server in VM
 
 	4.1 Install Docker: (https://docs.docker.com/engine/install/debian/)
