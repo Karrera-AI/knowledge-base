@@ -180,14 +180,27 @@
     5.1.1 Update secret manager API call
 	
   5.2 Deploy Karrera-web
-		
-    5.2.1 Inject process.env.GCP_PROJECT_ID in Cloudrun config
-		
-    5.2.2 Update secret manager API call(DB connection)
-		
-    5.2.3 Update Solid connection(providerOptions)
-		
-    5.2.4 Domain mapping(app.karrera.ai)
+			
+	5.2.1 Build Development
+	
+	Build in development mode
+	npm run build:dev
+	
+	The build will:
+	- Compile TypeScript
+	- Process React
+	- Minify code
+	- Generate files in dist/public/
+	
+	5.2.2 Production Build
+	
+	Build in production mode
+	npm run build:prod
+	
+	The build will:
+	- Compile with production optimizations
+	- Minify and optimize code
+	- Generate optimized files in dist/public/
 	
   5.3 Deploy Queue publisher
 	
