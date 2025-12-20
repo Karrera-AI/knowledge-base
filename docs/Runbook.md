@@ -267,9 +267,128 @@
 	
   5.4 Deploy WorkDNA
 		
-    5.4.1 Deploy ChromaDB(Insert initial collections)
+    5.4.1 Deploy ChromaDB on VM (Insert initial collections)
+
+		5.4.1.1 Open the VM (in our case, css-server)
+
+		5.4.1.2 Open port 8000
+
+		5.4.1.3  Pull the image from docker
+		docker pull chromadb/chroma:latest
+
+		5.4.1.4 Run the image inside the VM
+		docker run -d -v ./chroma-data:/data -p 8000:8000 --restart always chromadb/chroma 
+		- PS: Give a name if you want to using --name name-of-server
+
+		5.4.1.5 Update ChromaDB collections
+		To do that, we need to have embedded all the values (capabilities, workdna sheets for paths, paths descriptions, etc).
+		So, check the workdna-ai.md and sbert-chroma.md to know how to create collections and add the embeddings
+
 		
-    5.4.2 Update ChromaDB connection
+    5.4.2 Create Bucket and Upload the Embedding Model
+
+		5.4.2.1 Install Sentence Trasnformers.
+		```bash
+		pip install -U sentence-transformers
+		```
+		
+		5.4.2.2 Download the embedding model to local machine
+		We are using currently Qwen/Qwen3-Embedding-0.6B, so if we changed it, we would have to change the name and download the new one.
+		```python
+		from sentence_transformers import SentenceTransformer
+
+		name_of_model = "Qwen/Qwen3-Embedding-0.6B"
+
+		model = SentenceTransformer(name_of_model)
+		model.save(name_of_model) ## This will save the whole model config to the local machine, under the folder with the name of the model
+		```
+
+		5.4.2.3 Navigate to Cloud Storage
+		In the search bar at the top, type Buckets and select Cloud Storage > Buckets.
+		
+		5.4.2.4 Create and configure the Bucket
+		- Click the + CREATE button at the top of the page.
+		- Name your bucket (e.g., embedding-model) - names are public, so avoid sensitive names.
+		- Location: Set location to Multi-Region (us) or to the specific Region (e.g., `us-central1` for prod).
+		- Storage class: Select Standard.
+		- Access control: Select Uniform.
+		- Public Access Prevention: Ensure "Enforce public access prevention on this bucket" is checked.
+		- Create and Finalize: Click CREATE. If prompted with a "Public access will be prevented" warning, click CONFIRM.
+
+		5.4.2.5 Upload the folder to the bucket
+		- After the bucket is created, click the name of the bucket.
+		- In the Objects tab, Click Upload > Upload folder.
+		- Select the folder create at step 5.4.2.2 in the dialog that appears, then click Open.
+		OR, if preferred, one can use the gcloud storage cp command in command line:
+		```bash
+		gcloud storage cp FOLDER_PATH gs://DESTINATION_BUCKET_NAME
+		```
+
+	5.4.3 WorkDNA-AI deployment (using GCP Console)
+
+		5.4.3.1 Navigate to Cloud Run
+		- Go to Cloud Run and click Services.
+		- Then click Deploy Container in top right.
+		
+		5.4.3.2 Continuous Deployment Setup
+	    - Select Continuously deploy new revisions from a source repository.
+    	- Click Set Up Cloud Build.
+    	- Repository Provider: Select GitHub.
+    	- Repository: Select WorkDNA-AI repo.
+    	- Build Configuration: Choose Dockerfile.
+		- Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
+		
+		5.4.3.3: Service Settings
+    	- Region: Select us-east1 for prod, us-central1 for dev.
+    	- Authentication: Select Allow public access.
+		- Billing: Select Request-based.
+		- Scaling: Select Auto scaling, and set min = 1, max = 1.
+		- Ingress: In theory, WorKDNA can be used only internally, but we can select All as well.
+		
+		5.4.3.4: Container Settings
+	    - Go to Container, Networking, Security.
+		- Port: 5005 (make sure port 5005 is exposed).
+		- Select Containers
+
+			5.4.3.4.1: Settings
+			- Go to Settings.
+			- Resources: 4 GiB (Memory) and 1 CPU - for now, values can change as we go.
+			- Add Health Check:
+				- Type: Select Startup Check.
+				- Probe type: Select TCP.
+				- Port: 5005.
+				- Every 240s, default settings.
+			- Revision Scaling: min = 1, max = 1.
+			- Other settings leave as default values.
+
+			5.4.3.4.2: Volumes (to mount the bucket to the container)
+			- Go to Volumes.
+			- Select Add Mount Volume.
+			- Select Cloud Storage Bucket.
+			- Select the storage volume from 5.4.2.
+			- Specify the path where you want to mount the volume (i.e. qwen_models).
+			- In Mount options, Enable implicit directions ON. 
+			- Click Done.
+
+			5.4.3.4.3: Variables & Secrets
+			- Go to Variables & Secrets.
+			- Add the following environment variables (names: values):
+				- GEMINI_SECRET: <reference the url of the secret>
+				- POSTGRES_PASSWORD_SECRET: <reference the url of the secret>
+				- CHROMA_DB_HOST: <IP of the VM hosting the chroma>	
+				- CHROMA_DB_PORT: <chromaDB port>
+				- APP_VERSION: dev / prod
+				- VERSION: <version of the service itself, like v1.0, v1.1>
+				- APP_COMPONENT: work-dna-ontology-service	
+				- POSTGRES_DB_NAME: <name of the Postgres DB>
+				- GCS_MOUNT_ROOT: <path of the mounted bucket as we mentioned in 5.4.3.4.2>
+			
+			For now, we are referencing the secrets by pasting the url. We can switch it later to mounting the secret as well (TODO).
+
+			5.4.3.5 Create
+			- Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
+			- After this, look at the logs to see if everything is okay during the build.
+			- This build will deploy the the WorkDNA-AI service and all associated services into the app.
 	
   5.5 Deploy Biography API
 
