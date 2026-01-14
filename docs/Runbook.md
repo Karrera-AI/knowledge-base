@@ -4,7 +4,27 @@
 
 1 Deploy Postgres
 
+	1.1 Install Postgres via docker in VM(https://hub.docker.com/_/postgres)
+
+	1.2 Create Postgres instance in GCP CloudSQL(alternative)
+
 2 Create Secret Manager
+
+	2.1 Activate GCP Secret Manager.
+
+	2.2 Create keys for all needed backend services.
+
+		2.2.1 Backend-Postgres
+
+		2.2.2 CloudAMQP
+
+		2.2.3 Gemini-API
+
+		2.2.4 SERPER-API
+
+		2.2.5 Solid
+
+		2.2.6 X-API-Key
 
 3 Deploy Solid server in VM
 
@@ -236,7 +256,7 @@
 
 5 Set Cloudrun CD for all micro services
 	
-  5.1 Deploy Karrera-backend
+  5.1 Deploy Karrera-backend(Replit-backend and Postgres-backend)
 		
     5.1.1 Update secret manager API call
 	
