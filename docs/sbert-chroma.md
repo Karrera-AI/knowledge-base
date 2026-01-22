@@ -185,6 +185,12 @@ We sometimes migrate collections between environments (local → staging → pro
 Below is the full migration logic, with batching and metadata preservation.
 
 ```python
+# assume you are moving from One environment to another:
+old_client = ... # Either HTTPClient, PersistentClient, etc
+new_client = ... # Either HTTPClient, PersistentClient, etc
+list_of_collections = [...] # LIST of COLLECTIONS you want to move from one environment to another;
+
+# for every collection in the list of collections, move it from one environment to the other.
 for collection_name in list_of_collections:
     print("Getting the old collection")
     old_collection = old_client.get_collection(name=collection_name)
