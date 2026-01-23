@@ -4,7 +4,7 @@ In order to update the ontology, we need to call the API /ontology/update, which
 
 This document describes **all supported parameters** for updating the ontology (that you should pass).
 
-[!NOTE] There will be a file available with all the parameters for each version. In a good environment, we would be able to update the ontology without making the system go down.
+> There will be a file available with all the parameters for each version. In a good environment, we would be able to update the ontology without making the system go down.
 
 **Important rules:**
 - You should ONLY pass these parameters in the BODY of your request, in a json format.
@@ -32,7 +32,7 @@ new_version="KOIN-v1.1"
 
 ### `cap_collection_name` (string)
 
-[!IMPORTANT] ***Most of the times we will have to be passing this for the new version. The names follow a simple pattern of `capabilities_KOIN_v1.0` or `capabilities_KOIN_v1.1`. UNLESS nothing changes, this will have to be passed as a parameter.
+> ***Most of the times we will have to be passing this for the new version. The names follow a simple pattern of `capabilities_KOIN_v1.0` or `capabilities_KOIN_v1.1`. UNLESS nothing changes, this will have to be passed as a parameter.***
 
 Capability embeddings collection name.
 
