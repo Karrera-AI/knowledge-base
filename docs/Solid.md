@@ -8345,10 +8345,11 @@ This file is used to store Person information. It can be a small PI.ttl.
 * **schema:name** - Person name
 
 * **schema:roleName** - This field is used do represente the members relationship. It can be one of the following:
-  * Friends
-  * Partners
-  * Co-Workers
-  * Project Members
+	  * Friends
+	  * Partners
+	  * Co-Workers
+	  * Project Members
+  
 * **schema:member** - List of the members of this relationship. In our case it will contain the user webID and the connection description, Its can be either the link to this file or the webID in case the connection is already registered in Karrera platform
 * **schema:description** - Describes the relationship
 * **schema:ratingValue** - The intensity of this relationship from 0 to 1
