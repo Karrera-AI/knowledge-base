@@ -8320,16 +8320,39 @@ This file is used to store Person information. It can be a small PI.ttl.
 @prefix schema:  <http://schema.org/> .
 @prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
 
+# Ester
 </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/person/fdad4928-35a7-45dd-ae24-198bd8264b45.ttl>
-        a                     schema:Person ;
-        schema:id             "fdad4928-35a7-45dd-ae24-198bd8264b45" ;
-        schema:name           "Ester Lima" .
+    a schema:Person ;
+    schema:id "fdad4928-35a7-45dd-ae24-198bd8264b45" ;
+    schema:name "Ester Lima" .
+
+# Relationship instance
+<c15aa1ae-3def-43aa-b855-0d4362cd446d>
+    a schema:Role ;
+    schema:roleName     "Friends" ;
+    schema:member       <https://css-dev.karrera.ai/conta01_pod/profile/card#me> ,
+                        </a7bcfbf7-92bd-4cbe-96e9-2ee737970e26/KarreraAI/relationship/person/fdad4928-35a7-45dd-ae24-198bd8264b45.ttl> ;
+    schema:description  "Foram apresentados em uma reunião de amigos" ;
+    schema:subjectOf    [
+                        a schema:Rating ;
+                        schema:ratingValue "0.92"
+                        ] .
 ```
 
 **Fields Description**
 
 * **schema:id** - Person ID. It is a UUID to guarantee the id is unique
 * **schema:name** - Person name
+
+* **schema:roleName** - This field is used do represente the members relationship. It can be one of the following:
+  * Friends
+  * Partners
+  * Co-Workers
+  * Project Members
+* **schema:member** - List of the members of this relationship. In our case it will contain the user webID and the connection description, Its can be either the link to this file or the webID in case the connection is already registered in Karrera platform
+* **schema:description** - Describes the relationship
+* **schema:ratingValue** - The intensity of this relationship from 0 to 1
+
 
 ### project.ttl
 
