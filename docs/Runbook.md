@@ -299,25 +299,25 @@
     	- Build Configuration: Choose Dockerfile.
 		- Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
 		
-		5.3.1.3: Service Settings
+		5.3.1.3 Service Settings
     	- Region: Select us-east1 for prod, us-central1 for dev.
     	- Authentication: Select Allow public access.
 		- Billing: Select Request-based.
 		- Scaling: Select Auto scaling, and set min = 1, max = 1. These values can change in the future.
 		- Ingress: In theory, can be used only internally, but we can select All as well.
 		
-		5.3.1.4: Container Settings
+		5.3.1.4 Container Settings
 	    - Go to Container, Networking, Security.
 		- Port: 8000 (make sure port 8000 is exposed).
 		- Select Containers
 
-			5.3.1.4.1: Settings
+			5.3.1.4.1 Settings
 			- Go to Settings.
 			- Resources: 512MiB (Memory) and 1 CPU - for now, values can change as we go.
 			- Revision Scaling: min = 1, max = 1.
 			- Other settings leave as default values.
 
-			5.3.1.4.2: Variables & Secrets
+			5.3.1.4.2 Variables & Secrets
 			- Go to Variables & Secrets.
 			- Add the following environment variables (names: values):
 				- VERSION_NAME= <Version of CloudAMQP server password google secrets>
@@ -488,42 +488,92 @@
     	- Build Configuration: Choose Dockerfile.
 		- Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
 		
-		5.5.1.3: Service Settings
+		5.5.1.3 Service Settings
     	- Region: Select us-east1 for prod, us-central1 for dev.
     	- Authentication: Select Allow public access.
 		- Billing: Select Request-based.
 		- Scaling: Select Auto scaling, and set min = 1, max = 1. These values can change in the future.
 		- Ingress: In theory, can be used only internally, but we can select All as well.
 		
-		5.5.1.4: Container Settings
+		5.5.1.4 Container Settings
 	    - Go to Container, Networking, Security.
 		- Port: 8000 (make sure port 8000 is exposed).
 		- Select Containers
 
-			5.5.1.4.1: Settings
+			5.5.1.4.1 Settings
 			- Go to Settings.
 			- Resources: 512MiB (Memory) and 1 CPU - for now, values can change as we go.
 			- Revision Scaling: min = 1, max = 1.
 			- Other settings leave as default values.
 
-			5.5.1.4.2: Variables & Secrets
+			5.5.1.4.2 Variables & Secrets
 			- Go to Variables & Secrets.
 			- Add the following environment variables (names: values):
 				- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
 				- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
 				- SERVER_PORT= <Cloud AMQP server port>
-				- APP_VERSION= <Queue Publisher version - e.g. Dev>
+				- APP_VERSION= <Biography_API version - e.g. Dev>
 				- APP_HOST= <Queue publisher google host server - e.g. CloudRun-us-east1>
 				
 			5.5.1.5 Create
 			- Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
 			- After this, look at the logs to see if everything is okay during the build.
-			- This build will deploy the the QueuePublisher service into the app.
+			- This build will deploy the the Biography_API service into the app.
 
-6 Deploy Artifact Consumer in Worker Pool
+6 Set Cloudrun Worker Pool Services
 
-7 Deploy Chat Consumer in Worker Pool
+    6.1 Deploy artifact-scrape-consumer in Worker Pool
 
-8 Deploy Scrape Consumer in Worker Pool
+		6.1.1 artifact-scrape-consumer deployment (using GCP Console)
 
-9 Deploy CV Consumer in Worker Pool
+			6.1.1.1 Navigate to Cloud Run
+			- Go to Cloud Run and click Worker Pools.
+			- Then click Deploy Container in top right.
+			
+			6.1.1.2 Worker Pool Setup
+	    	- Select the container image URL, choosing the latest version from karrera-artifact-scrape-consumer inside karrera-consumers.
+			
+			6.1.1.3 Service Settings
+	    	- Region: Select us-east1 for prod, us-central1 for dev.
+			- Instances: Select 1 as the number of instances. The number may be changed in the future.
+			
+			6.1.1.4 Container Settings
+		    - Go to Container, Networking, Security.
+			- Select Containers
+	
+				6.1.1.4.1 Settings
+				- Go to Settings.
+				- Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+				- Other settings leave as default values.
+	
+				6.1.1.4.2 Variables & Secrets
+				- Go to Variables & Secrets.
+				- Add the following environment variables (names: values):
+					- SERVER_VERSION_NAME= <Version of CloudAMQP server password google secrets>
+					- SERVER_NAME= <Cloud AMQP server name>
+					- VIRTUAL_HOST= <Cloud AMQP virtual host name>
+					- HOST= <Cloud AMQP host address>
+					- SERVER_PORT= <Cloud AMQP server port>
+					- APP_VERSION= <artifact-scrape-consumer version - e.g. Dev>>
+					- APP_HOST= <Queue publisher google host server - e.g. CloudRun-Worker-pools-us-central1>
+					- ARTIFACT_QUEUE=Artifact_reader_DEV
+					- ARTIFACT_DLQ=artifact_reader_dlq_DEV
+					- POD_URL= <URL of the PODs, for dev or prod>
+					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
+					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
+					- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
+					- DNA_API_URL= <WorkDNA CloudRun API URL>
+					- DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+					- DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+					
+				6.1.1.5 Create
+				- Click Create. The Worker Pool service will be created.
+				- After this, look at the logs to see if everything is okay during the build.
+				- This build will deploy the the Artifact-Scrape-Consumer service into the app.
+	
+
+	6.2 Deploy chat-Consumer in Worker Pool
+	
+	6.3 Deploy scrape-consumer in Worker Pool
+	
+	6.4 Deploy CV-Consumer in Worker Pool
