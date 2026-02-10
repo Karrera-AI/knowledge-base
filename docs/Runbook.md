@@ -513,7 +513,7 @@
 				- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
 				- SERVER_PORT= <Cloud AMQP server port>
 				- APP_VERSION= <Biography_API version - e.g. Dev>
-				- APP_HOST= <Queue publisher google host server - e.g. CloudRun-us-east1>
+				- APP_HOST= <Biography_API google host server - e.g. CloudRun-us-east1>
 				
 			5.5.1.5 Create
 			- Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
@@ -525,6 +525,153 @@
     6.1 Deploy artifact-scrape-consumer in Worker Pool
 
 		6.1.1 artifact-scrape-consumer deployment (using GCP Console)
+
+			6.1.1.1 Navigate to Cloud Run
+			- Go to Cloud Run and click Worker Pools.
+			- Then click Deploy Container in top right.
+			
+			6.1.1.2 Worker Pool Setup
+	    	- Select the container image URL, choosing the latest version from karrera-artifact-scrape-consumer inside karrera-consumers.
+			
+			6.1.1.3 Service Settings
+	    	- Region: Select us-east1 for prod, us-central1 for dev.
+			- Instances: Select 1 as the number of instances. The number may be changed in the future.
+			
+			6.1.1.4 Container Settings
+		    - Go to Container, Networking, Security.
+			- Select Containers
+	
+				6.1.1.4.1 Settings
+				- Go to Settings.
+				- Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+				- Other settings leave as default values.
+	
+				6.1.1.4.2 Variables & Secrets
+				- Go to Variables & Secrets.
+				- Add the following environment variables (names: values):
+					- SERVER_VERSION_NAME= <Version of CloudAMQP server password google secrets>
+					- SERVER_NAME= <Cloud AMQP server name>
+					- VIRTUAL_HOST= <Cloud AMQP virtual host name>
+					- HOST= <Cloud AMQP host address>
+					- SERVER_PORT= <Cloud AMQP server port>
+					- APP_VERSION= <artifact-scrape-consumer version - e.g. Dev>>
+					- APP_HOST= <artifact-scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
+					- ARTIFACT_QUEUE=Artifact_reader_DEV
+					- ARTIFACT_DLQ=artifact_reader_dlq_DEV
+					- POD_URL= <URL of the PODs, for dev or prod>
+					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
+					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
+					- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
+					- DNA_API_URL= <WorkDNA CloudRun API URL>
+					- DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+					- DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+					
+				6.1.1.5 Create
+				- Click Create. The Worker Pool service will be created.
+				- After this, look at the logs to see if everything is okay during the build.
+				- This build will deploy the the artifact-scrape-consumer service into the app.	
+
+	6.2 Deploy chat-Consumer in Worker Pool
+
+		6.2.1 chat-consumer deployment (using GCP Console)
+		
+			6.2.1.1 Navigate to Cloud Run
+			- Go to Cloud Run and click Worker Pools.
+			- Then click Deploy Container in top right.
+			
+			6.2.1.2 Worker Pool Setup
+	    	- Select the container image URL, choosing the latest version from karrera-chat-consumer inside karrera-consumers.
+			
+			6.2.1.3 Service Settings
+	    	- Region: Select us-east1 for prod, us-central1 for dev.
+			- Instances: Select 1 as the number of instances. The number may be changed in the future.
+			
+			6.2.1.4 Container Settings
+		    - Go to Container, Networking, Security.
+			- Select Containers
+	
+				6.2.1.4.1 Settings
+				- Go to Settings.
+				- Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+				- Other settings leave as default values.
+	
+				6.2.1.4.2 Variables & Secrets
+				- Go to Variables & Secrets.
+				- Add the following environment variables (names: values):
+					- SERVER_VERSION_NAME= <Version of CloudAMQP server password google secrets>
+					- SERVER_NAME= <Cloud AMQP server name>
+					- VIRTUAL_HOST= <Cloud AMQP virtual host name>
+					- HOST= <Cloud AMQP host address>
+					- SERVER_PORT= <Cloud AMQP server port>
+					- APP_VERSION= <chat-consumer version - e.g. Dev>>
+					- APP_HOST= <chat-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
+					- CHAT_QUEUE=Chat_reader
+					- CHAT_DLQ=chat_reader_dlq
+					- POD_URL= <URL of the PODs, for dev or prod>
+					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
+					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
+					- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
+					- DNA_API_URL= <WorkDNA CloudRun API URL>
+					- DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+					- DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+					- AI_CHAT_ID= <ID of the Chat Agent>
+					
+				6.2.1.5 Create
+				- Click Create. The Worker Pool service will be created.
+				- After this, look at the logs to see if everything is okay during the build.
+				- This build will deploy the the chat-consumer service into the app.
+
+	6.3 Deploy scrape-consumer in Worker Pool
+
+		6.3.1 scrape-consumer  deployment (using GCP Console)
+
+			6.3.1.1 Navigate to Cloud Run
+			- Go to Cloud Run and click Worker Pools.
+			- Then click Deploy Container in top right.
+			
+			6.3.1.2 Worker Pool Setup
+	    	- Select the container image URL, choosing the latest version from karrera-scrape-consumer inside karrera-consumers.
+			
+			6.3.1.3 Service Settings
+	    	- Region: Select us-east1 for prod, us-central1 for dev.
+			- Instances: Select 1 as the number of instances. The number may be changed in the future.
+			
+			6.3.1.4 Container Settings
+		    - Go to Container, Networking, Security.
+			- Select Containers
+	
+				6.3.1.4.1 Settings
+				- Go to Settings.
+				- Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+				- Other settings leave as default values.
+	
+				6.3.1.4.2 Variables & Secrets
+				- Go to Variables & Secrets.
+				- Add the following environment variables (names: values):
+					- SERPER_URL=https://google.serper.dev/search
+					- SERPER_API_KEY_VERSION_NAME= <Version of SERPER-API-Key password google secrets>
+					- SERVER_VERSION_NAME= <Version of CloudAMQP server password google secrets>
+					- SERVER_NAME= <Cloud AMQP server name>
+					- VIRTUAL_HOST= <Cloud AMQP virtual host name>
+					- HOST= <Cloud AMQP host address>
+					- SERVER_PORT= <Cloud AMQP server port>
+					- APP_VERSION= <scrape-consumer version - e.g. Dev>>
+					- APP_HOST= <scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
+					- SCRAPE_QUEUE=Scrape_web_DEV
+					- SCRAPE_DLQ=scrape_web_dlq_DEV
+					- POD_URL= <URL of the PODs, for dev or prod>
+					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
+					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
+					- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
+					
+				6.3.1.5 Create
+				- Click Create. The Worker Pool service will be created.
+				- After this, look at the logs to see if everything is okay during the build.
+				- This build will deploy the the scrape-consumer service into the app.
+				
+	6.4 Deploy CV-Consumer in Worker Pool
+
+		6.3.1 scrape-consumer  deployment (using GCP Console)
 
 			6.1.1.1 Navigate to Cloud Run
 			- Go to Cloud Run and click Worker Pools.
@@ -570,10 +717,4 @@
 				- Click Create. The Worker Pool service will be created.
 				- After this, look at the logs to see if everything is okay during the build.
 				- This build will deploy the the Artifact-Scrape-Consumer service into the app.
-	
-
-	6.2 Deploy chat-Consumer in Worker Pool
-	
-	6.3 Deploy scrape-consumer in Worker Pool
-	
-	6.4 Deploy CV-Consumer in Worker Pool
+				
