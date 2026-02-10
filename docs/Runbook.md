@@ -284,6 +284,68 @@
 	- Generate optimized files in dist/public/
 	
   5.3 Deploy Queue publisher
+
+    5.3.3 Queue publisher deployment (using GCP Console)
+
+		5.3.3.1 Navigate to Cloud Run
+		- Go to Cloud Run and click Services.
+		- Then click Deploy Container in top right.
+		
+		5.3.3.2 Continuous Deployment Setup
+	    - Select Continuously deploy new revisions from a source repository.
+    	- Click Set Up Cloud Build.
+    	- Repository Provider: Select GitHub.
+    	- Repository: Select QueuePublisher repo.
+    	- Build Configuration: Choose Dockerfile.
+		- Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
+		
+		5.3.3.3: Service Settings
+    	- Region: Select us-east1 for prod, us-central1 for dev.
+    	- Authentication: Select Allow public access.
+		- Billing: Select Request-based.
+		- Scaling: Select Auto scaling, and set min = 1, max = 1. These values can change in the future.
+		- Ingress: In theory, can be used only internally, but we can select All as well.
+		
+		5.3.3.4: Container Settings
+	    - Go to Container, Networking, Security.
+		- Port: 8000 (make sure port 8000 is exposed).
+		- Select Containers
+
+			5.3.3.4.1: Settings
+			- Go to Settings.
+			- Resources: 512MiB (Memory) and 1 CPU - for now, values can change as we go.
+			- Revision Scaling: min = 1, max = 1.
+			- Other settings leave as default values.
+
+			5.3.3.4.2: Variables & Secrets
+			- Go to Variables & Secrets.
+			- Add the following environment variables (names: values):
+				- VERSION_NAME= <Version of CloudAMQP server password google secrets>
+				- SERVER_NAME= <Cloud AMQP server name>
+				- VIRTUAL_HOST= <Cloud AMQP virtual host name>
+				- HOST= <Cloud AMQP host address>
+				- SERVER_PORT= <Cloud AMQP server port>
+				- APP_VERSION= <Queue Publisher version - e.g. Dev>
+				- APP_HOST= <Queue publisher google host server - e.g. CloudRun-us-east1>
+				- SCRAPE_QUEUE=Scrape_web
+				- SCRAPE_DLQ=scrape_web_dlq
+				- ARTIFACT_QUEUE=Artifact_reader
+				- ARTIFACT_DLQ=artifact_reader_dlq
+				- CV_QUEUE=CV_reader
+				- CV_DLQ=CV_reader_dlq
+				- CHAT_QUEUE=Chat_reader
+				- CHAT_DLQ=chat_reader_dlq
+				- PI_QUEUE=PI_reader
+				- PI_DLQ=PI_reader_dlq
+				- MEMORY_QUEUE=Memory_creator
+				- MEMORY_DLQ=memory_creator_dlq
+				- GENERIC_ARTIFACT_QUEUE=Generic_artifact_reader
+				- GENERIC_ARTIFACT_DLQ=generic_artifact_dlq
+				
+			5.3.3.5 Create
+			- Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
+			- After this, look at the logs to see if everything is okay during the build.
+			- This build will deploy the the QueuePublisher service into the app.
 	
   5.4 Deploy WorkDNA
 		
