@@ -327,20 +327,20 @@
 				- SERVER_PORT= <Cloud AMQP server port>
 				- APP_VERSION= <Queue Publisher version - e.g. Dev>
 				- APP_HOST= <Queue publisher google host server - e.g. CloudRun-us-east1>
-				- SCRAPE_QUEUE=Scrape_web
-				- SCRAPE_DLQ=scrape_web_dlq
-				- ARTIFACT_QUEUE=Artifact_reader
-				- ARTIFACT_DLQ=artifact_reader_dlq
-				- CV_QUEUE=CV_reader
-				- CV_DLQ=CV_reader_dlq
-				- CHAT_QUEUE=Chat_reader
-				- CHAT_DLQ=chat_reader_dlq
-				- PI_QUEUE=PI_reader
-				- PI_DLQ=PI_reader_dlq
-				- MEMORY_QUEUE=Memory_creator
-				- MEMORY_DLQ=memory_creator_dlq
-				- GENERIC_ARTIFACT_QUEUE=Generic_artifact_reader
-				- GENERIC_ARTIFACT_DLQ=generic_artifact_dlq
+				- SCRAPE_QUEUE= <Scrape_web | Scrape_web_DEV - prod or dev>
+				- SCRAPE_DLQ= <scrape_web_dlq | scrape_web_dlq_DEV - prod or dev>
+				- ARTIFACT_QUEUE= <Artifact_reader | Artifact_reader_DEV - prod or dev>
+				- ARTIFACT_DLQ= <artifact_reader_dlq | artifact_reader_dlq_DEV - prod or dev>
+				- CV_QUEUE= <CV_reader | CV_reader_DEV - prod or dev>
+				- CV_DLQ= <CV_reader_dlq | CV_reader_dlq_DEV - prod or dev>
+				- CHAT_QUEUE= <Chat_reader | Chat_reader_DEV - prod or dev>
+				- CHAT_DLQ= <chat_reader_dlq | chat_reader_dlq_DEV - prod or dev>
+				- PI_QUEUE= <PI_reader | PI_reader_DEV - prod or dev>
+				- PI_DLQ= <PI_reader_dlq | PI_reader_dlq_DEV - prod or dev>
+				- MEMORY_QUEUE= <Memory_creator | Memory_creator_DEV - prod or dev>
+				- MEMORY_DLQ= <memory_creator_dlq | memory_creator_dlq_DEV - prod or dev>
+				- GENERIC_ARTIFACT_QUEUE= <Generic_artifact_reader | Generic_artifact_reader_DEV - prod or dev>
+				- GENERIC_ARTIFACT_DLQ= <generic_artifact_dlq | generic_artifact_dlq_DEV - prod or dev>
 				
 			5.3.1.5 Create
 			- Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
@@ -556,8 +556,8 @@
 					- SERVER_PORT= <Cloud AMQP server port>
 					- APP_VERSION= <artifact-scrape-consumer version - e.g. Dev>>
 					- APP_HOST= <artifact-scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
-					- ARTIFACT_QUEUE=Artifact_reader_DEV
-					- ARTIFACT_DLQ=artifact_reader_dlq_DEV
+					- ARTIFACT_QUEUE= <Artifact_reader | Artifact_reader_DEV - prod or dev>
+					- ARTIFACT_DLQ= <artifact_reader_dlq | artifact_reader_dlq_DEV - prod or dev>
 					- POD_URL= <URL of the PODs, for dev or prod>
 					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
 					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
@@ -605,8 +605,8 @@
 					- SERVER_PORT= <Cloud AMQP server port>
 					- APP_VERSION= <chat-consumer version - e.g. Dev>>
 					- APP_HOST= <chat-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
-					- CHAT_QUEUE=Chat_reader
-					- CHAT_DLQ=chat_reader_dlq
+					- CHAT_QUEUE= <Chat_reader | Chat_reader_DEV - prod or dev>
+					- CHAT_DLQ= <chat_reader_dlq | chat_reader_dlq_DEV - prod or dev>
 					- POD_URL= <URL of the PODs, for dev or prod>
 					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
 					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
@@ -657,8 +657,8 @@
 					- SERVER_PORT= <Cloud AMQP server port>
 					- APP_VERSION= <scrape-consumer version - e.g. Dev>>
 					- APP_HOST= <scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
-					- SCRAPE_QUEUE=Scrape_web_DEV
-					- SCRAPE_DLQ=scrape_web_dlq_DEV
+					- SCRAPE_QUEUE= <Scrape_web | Scrape_web_DEV - prod or dev>
+					- SCRAPE_DLQ= <scrape_web_dlq | scrape_web_dlq_DEV - prod or dev>
 					- POD_URL= <URL of the PODs, for dev or prod>
 					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
 					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
@@ -703,15 +703,15 @@
 					- SERVER_PORT= <Cloud AMQP server port>
 					- APP_VERSION= <CV-Consumer version - e.g. Dev>>
 					- APP_HOST= <CV-Consumer google host server - e.g. CloudRun-Worker-pools-us-central1>
-					- CV_QUEUE=CV_reader_DEV
-					- CV_DLQ=CV_reader_dlq_DEV
+					- CV_QUEUE= <CV_reader | CV_reader_DEV - prod or dev>
+					- CV_DLQ= <CV_reader_dlq | CV_reader_dlq_DEV - prod or dev>
 					- POD_URL= <URL of the PODs, for dev or prod>
 					- X_API_KEY_VERSION_NAME= <Version of X-API-Key password google secrets>
 					- GEMINI_API_KEY_VERSION_NAME= <Version of Gemini-Api-Key password google secrets>
 					- GEMINI_MODEL_ID= <Gemini model used - e.g. gemini-2.5-flash>
 					- DNA_API_URL= <WorkDNA CloudRun API URL>
 					- DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
-					- DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+					- DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths			
 					
 				6.4.1.5 Create
 				- Click Create. The Worker Pool service will be created.
