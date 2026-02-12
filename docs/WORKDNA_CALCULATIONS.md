@@ -667,7 +667,7 @@ flowchart TB
     A[Input<br/>source, start_date, end_date, growth_type, time_consumption] --> B[Parse dates]
     B --> C[Compute duration_months]
     C --> D[duration_growth_factor<br/>C * months^k]
-    B --> E[Compute T<br/>(years since end)]
+    B --> E[Compute T]
     A --> F[source_to_weight]
     E --> G[decay_factor(T)]
     A --> H[get_time_consumption_mock or value]
