@@ -59,9 +59,9 @@ These define how sharply XP grows with time:
 
 General growth term:
 
-\[
+```math
 f(\text{duration\_months}) = C \cdot \text{duration\_months}^{k}
-\]
+```
 
 - `C`: growth coefficient for that type.
 - `k`: one of the exponents above.
@@ -78,9 +78,9 @@ These encode “how many months until mastery” for each growth type:
 
 At these durations, with `source_weight = MAX_SOURCE_WEIGHT` and no decay, we want:
 
-\[
+```math
 \text{XP} \approx \text{MAX\_XP} = 1000
-\]
+```
 
 ---
 
@@ -88,32 +88,32 @@ At these durations, with `source_weight = MAX_SOURCE_WEIGHT` and no decay, we wa
 
 We solve for \(C\) so that at mastery we get `MAX_XP` from a max-weight source:
 
-\[
+```math
 C = \frac{\text{MAX\_XP}}{\text{MAX\_SOURCE\_WEIGHT} \cdot \text{calibration\_months}^{k}}
-\]
+```
 
 In code:
 
 - **`C_SATURATING`**:
 
-\[
+```math
 C_{\text{saturating}} =
 \frac{1000}{6 \cdot (144)^{0.5}}
-\]
+```
 
 - **`C_LINEAR`**:
 
-\[
+```math
 C_{\text{linear}} =
 \frac{1000}{6 \cdot (144)^{1.0}}
-\]
+```
 
 - **`C_COMPOUNDING`**:
 
-\[
+```math
 C_{\text{compounding}} =
 \frac{1000}{6 \cdot (240)^{1.2}}
-\]
+```
 
 These are precomputed on import and stored in `GROWTH_TYPES`.
 
@@ -125,8 +125,8 @@ These are precomputed on import and stored in `GROWTH_TYPES`.
 
 - Keys: `"saturating"`, `"linear"`, `"compounding"` (case-insensitive in usage).
 - Values: dictionaries with:
-  - **`"k"`**: exponent \(k\).
-  - **`"C"`**: coefficient \(C\).
+  - **`"k"`**: exponent $k$.
+  - **`"C"`**: coefficient $C$.
   - **`"calibration_months"`**: mastery duration used during calibration.
 
 This powers:
@@ -144,9 +144,9 @@ The XP → Level mapping uses a logarithmic curve with:
 - **`S_SCALING_FACTOR = 50`** (S): horizontal stretch parameter.
 - **`A_SCALING_FACTOR`** (A): vertical gain parameter, computed as:
 
-\[
+```math
 A = \frac{5}{\ln\left(\frac{1 + \text{MAX\_XP}}{S}\right)}
-\]
+```
 
 This makes sure that around `XP ≈ MAX_XP (1000)`, we are near Level 5.
 
@@ -168,13 +168,13 @@ These two constants are used in:
 Defines the minimum fraction of XP that remains even for very old experience.  
 The decay function is:
 
-\[
+```math
 \text{decay\_factor}(T) = \text{Base} + (1 - \text{Base}) \cdot e^{-\lambda T}
-\]
+```
 
 Where:
-- \(T\) = years since the capability was last active.
-- \(\lambda\) = volatility rate (from `get_volatility_rate()`).
+- $T$ = years since the capability was last active.
+- $\lambda$ = volatility rate (from `get_volatility_rate()`).
 
 With `Base = 0.4`:
 - Very recent experience (T ≈ 0) ⇒ factor close to 1.0.
@@ -191,18 +191,18 @@ This section maps each public function to its formula and variable meanings.
 **Purpose**: Turn a model probability into XP for a node, scaled by capability strength.
 
 **Inputs**:
-- **`probability`**: float in \([0, 1]\), probability that a given node is relevant.
+- **`probability`**: float in $\[0, 1\]$, probability that a given node is relevant.
 - **`capability_xp`**: XP of the capability itself (usually from `calculate_node_xp`).
 
 **Computation**:
 
-\[
+```math
 \text{raw\_xp} = \text{probability} \cdot \text{capability\_xp}
-\]
+```
 
-\[
+```math
 \text{gained\_xp} = \max(1, \text{round(raw\_xp)})
-\]
+```
 
 **Key variables**:
 - `probability`: node relevance confidence.
@@ -221,9 +221,9 @@ This section maps each public function to its formula and variable meanings.
 
 Used in:
 
-\[
+```math
 \text{decay\_factor}(T) = \text{Base} + (1 - \text{Base}) \cdot e^{-\lambda T}
-\]
+```
 
 **Variable meaning**:
 - `λ` (lambda): higher means faster decay; lower means slower decay.
@@ -267,7 +267,7 @@ Currently:
 
 ### 3.6 `duration_growth_factor(duration_months: float, growth_type: str = "linear") -> float`
 
-**Purpose**: Compute the growth term \( f(\text{duration\_months}) \).
+**Purpose**: Compute the growth term $f(\text{duration\_months})$.
 
 **Inputs**:
 - `duration_months`: total active time in months.
@@ -275,18 +275,18 @@ Currently:
 
 **Computation**:
 
-1. Retrieve \(C, k\) from `get_capability_growth_params(growth_type)`.
+1. Retrieve $(C,k)$ from `get_capability_growth_params(growth_type)`.
 2. Clamp duration:
 
-\[
+```math
 \text{duration\_months\_clamped} = \max(1.0, \text{duration\_months})
-\]
+```
 
 3. Compute:
 
-\[
+```math
 \text{duration\_factor} = C \cdot (\text{duration\_months\_clamped})^{k}
-\]
+```
 
 **Variable meanings**:
 - `duration_months`: raw months of experience.
@@ -304,9 +304,9 @@ Currently:
    - `C`, `k`, `calibration_months`.
 2. Compute:
 
-\[
+```math
 \text{XP\_max} = \text{source\_weight} \cdot C \cdot (\text{calibration\_months})^{k}
-\]
+```
 
 **Intended usage**:
 - Sanity-check the calibration.
@@ -318,7 +318,7 @@ Currently:
 
 ### 4.1 `xp_to_level(xp: int) -> float`
 
-**Purpose**: Map a raw XP amount to a WorkDNA level in \([0, 5]\).
+**Purpose**: Map a raw XP amount to a WorkDNA level in $\[0, 5\]$.
 
 **Formula**:
 
@@ -370,21 +370,21 @@ graph LR
 **Inverse Formula**:
 
 From:
-\[
+```math
 \text{level} = A \cdot \ln\left(1 + \frac{\text{XP}}{S}\right)
-\]
+```
 
 We derive:
 
-\[
+```math
 \text{XP} = S \cdot \left(e^{\frac{\text{level}}{A}} - 1\right)
-\]
+```
 
 **Implementation**:
 
-\[
+```math
 \text{xp} = S\_{\text{SCALING\_FACTOR}} \cdot \left(\exp\left(\frac{\text{level}}{A\_{\text{SCALING\_FACTOR}}}\right) - 1\right)
-\]
+```
 
 **Variables**:
 - `level`: node level in [0, 5].
