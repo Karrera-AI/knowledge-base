@@ -267,7 +267,7 @@ Currently:
 
 ### 3.6 `duration_growth_factor(duration_months: float, growth_type: str = "linear") -> float`
 
-**Purpose**: Compute the growth term $f(\text{duration_months})$.
+**Purpose**: Compute the growth term $f(\text{duration}\_\text{months})$.
 
 **Inputs**:
 - `duration_months`: total active time in months.
