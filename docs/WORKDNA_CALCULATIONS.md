@@ -191,7 +191,7 @@ This section maps each public function to its formula and variable meanings.
 **Purpose**: Turn a model probability into XP for a node, scaled by capability strength.
 
 **Inputs**:
-- **`probability`**: float in $\[0, 1\]$, probability that a given node is relevant.
+- **`probability`**: float in $[0, 1]$, probability that a given node is relevant.
 - **`capability_xp`**: XP of the capability itself (usually from `calculate_node_xp`).
 
 **Computation**:
@@ -267,7 +267,7 @@ Currently:
 
 ### 3.6 `duration_growth_factor(duration_months: float, growth_type: str = "linear") -> float`
 
-**Purpose**: Compute the growth term $f(\text{duration\_months})$.
+**Purpose**: Compute the growth term $f(\text{duration_months})$.
 
 **Inputs**:
 - `duration_months`: total active time in months.
@@ -318,17 +318,17 @@ Currently:
 
 ### 4.1 `xp_to_level(xp: int) -> float`
 
-**Purpose**: Map a raw XP amount to a WorkDNA level in $\[0, 5\]$.
+**Purpose**: Map a raw XP amount to a WorkDNA level in $[0, 5]$.
 
 **Formula**:
 
-\[
+```math
 \text{level\_raw} = A \cdot \ln\left(1 + \frac{\text{XP}}{S}\right)
-\]
+```
 
-\[
+```math
 \text{level} = \min(\text{level\_raw}, 5)
-\]
+```
 
 Where:
 - `A = A_SCALING_FACTOR`
@@ -465,9 +465,9 @@ For each capability `cap`:
    - `prob = node["probability"]`
    - `gained_xp = probability_to_xp(prob, exp_weight)`
    - Increment:
-\[
+```math
 \text{node\_xp}[node\_id] \mathrel{+}= \text{gained\_xp}
-\]
+```
 
 **Output**:
 - `node_xp`: dictionary `{ node_id: total_xp }`.
@@ -504,17 +504,17 @@ flowchart LR
 
 **Steps**:
 1. Convert old level to XP:
-\[
+```math
 \text{xp\_node} = \text{level\_to\_xp(previous\_node\_level)}
-\]
+```
 2. Add XP delta:
-\[
+```math
 \text{xp\_total} = \text{xp\_node} + \text{xp}
-\]
+```
 3. Convert back to level:
-\[
+```math
 \text{new\_level} = \text{xp\_to\_level(xp\_total)}
-\]
+```
 
 **Output**:
 - New level (capped by the logic in `xp_to_level`, i.e. max 5).
@@ -581,10 +581,10 @@ Four cases:
 - **Case 3 – only `start_date` (ongoing)**:
   - `end_date_dt = today`
   - Months between start and today:
-\[
+```math
 \text{duration\_months} =
 \max\left(1,\ (\text{end\_year} - \text{start\_year}) \cdot 12 + (\text{end\_month} - \text{start\_month})\right)
-\]
+```
 
 - **Case 4 – both provided**:
   - Similar computation, but between `start_date_dt` and `end_date_dt`.
@@ -593,9 +593,9 @@ Always clamped to at least 1 month.
 
 #### 3. Time since last active (`T` in years)
 
-\[
+```math
 T = \frac{\text{(today - end\_date\_dt).days}}{365.0}
-\]
+```
 
 This feeds into the decay function.
 
@@ -612,9 +612,9 @@ Returns an integer (typically 1–6) based on the logic in section 5.
 
 Compute:
 
-\[
+```math
 \text{decay\_factor} = \text{base} + (1.0 - \text{base}) \cdot e^{-\lambda T}
-\]
+```
 
 #### 6. Duration growth
 
@@ -622,9 +622,9 @@ Compute:
 
 This uses:
 
-\[
+```math
 \text{duration\_factor} = C \cdot \text{duration\_months}^{k}
-\]
+```
 
 with `C` and `k` from `GROWTH_TYPES[growth_type]`.
 
@@ -634,17 +634,17 @@ with `C` and `k` from `GROWTH_TYPES[growth_type]`.
   - Use `get_time_consumption_mock(...)` → `1.0`.
 - Then:
 
-\[
+```math
 \text{time\_consumption} = \max(0.0, \text{float(time\_consumption)})
-\]
+```
 
 #### 8. Final XP formula
 
 Putting everything together:
 
-\[
+```math
 \text{XP} = \text{source\_weight} \cdot \text{decay\_factor} \cdot \text{duration\_factor} \cdot \text{time\_consumption}
-\]
+```
 
 Code:
 
