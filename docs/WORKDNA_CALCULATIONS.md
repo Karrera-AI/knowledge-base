@@ -489,7 +489,7 @@ flowchart LR
     B --> E[probability_to_xp]
     D --> E
     E --> F[XP for Node j]
-    F --> G[Aggregate node_xp[node_id]]
+    F --> G["Aggregate node_xp[node_id]"]
 ```
 
 ---
