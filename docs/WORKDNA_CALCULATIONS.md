@@ -358,7 +358,7 @@ graph LR
     A[XP = 0] --> B[XP = 50<br/>Level ~ 1]
     B --> C[XP = 200<br/>Level ~ 2.3]
     C --> D[XP = 500<br/>Level ~ 3.6]
-    D --> E[XP = 1000<br/>Level = 5 (cap)]
+    D --> E[XP = 1000<br/>Level = 5]
 ```
 
 ---
