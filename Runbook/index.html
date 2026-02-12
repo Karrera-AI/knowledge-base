@@ -1,0 +1,1591 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Personal-AI-APIs/">
+      
+      
+        <link rel="next" href="../Solid/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/favicon.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Karrera Infra Runbook - KarreraAI Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#karrera-infra-runbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="KarreraAI Docs" class="md-header__button md-logo" aria-label="KarreraAI Docs" data-md-component="logo">
+      
+  <img src="../assets/KarreraLogo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KarreraAI Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Karrera Infra Runbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="deep-purple"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="KarreraAI Docs" class="md-nav__button md-logo" aria-label="KarreraAI Docs" data-md-component="logo">
+      
+  <img src="../assets/KarreraLogo.jpeg" alt="logo">
+
+    </a>
+    KarreraAI Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Welcome to KarreraAI Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Front-Doc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FrontEnd - Doc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Personal-AI-APIs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Personal-AI APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Karrera Infra Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Solid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WORKDNA_CALCULATIONS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WORKDNA CALCULATIONS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../admonitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Admonitions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cicd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI/CD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content-tab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content tab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagram-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diagram Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Gateway Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../load-balancer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Load Balancer Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-system-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory System API Documentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ontology_update_call/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ontology Update Parameters Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sbert-chroma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SENTENCE EMBEDDINGS &amp; CHROMADB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../secret-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secret Manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workdna-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WORK DNA AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="karrera-infra-runbook">Karrera Infra Runbook</h1>
+<p>*Set IAM permissions for default compute service account.</p>
+<p>1 Deploy Postgres</p>
+<div class="language-text highlight"><pre><span></span><code>1.1 Install Postgres via docker in VM(https://hub.docker.com/_/postgres)
+
+1.2 Create Postgres instance in GCP CloudSQL(alternative)
+</code></pre></div>
+<p>2 Create Secret Manager</p>
+<div class="language-text highlight"><pre><span></span><code>2.1 Activate GCP Secret Manager.
+
+2.2 Create keys for all needed backend services.
+
+    2.2.1 Backend-Postgres
+
+    2.2.2 CloudAMQP
+
+    2.2.3 Gemini-API
+
+    2.2.4 SERPER-API
+
+    2.2.5 Solid
+
+    2.2.6 X-API-Key
+</code></pre></div>
+<p>3 Deploy Solid server in VM</p>
+<div class="language-text highlight"><pre><span></span><code>3.1 Install Docker: (https://docs.docker.com/engine/install/debian/)
+
+    3.1.1 Add Docker&#39;s official GPG key:
+
+        sudo apt update
+        sudo apt install ca-certificates curl
+        sudo install -m 0755 -d /etc/apt/keyrings
+        sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    3.1.2 Add the repository to Apt sources:
+
+        sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
+        Types: deb
+        URIs: https://download.docker.com/linux/debian
+        Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)
+        Components: stable
+        Signed-By: /etc/apt/keyrings/docker.asc
+        EOF
+
+    3.1.3 Update and Install Docker
+
+        sudo apt update
+        sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+3.2 Pull and run Solid server image
+
+    3.2.1 Authenticate Docker to use Google Container Registry
+
+        ```bash
+        gcloud auth configure-docker
+        ```
+
+    3.2.2 Setup docker-compose.yml file (/opt/solid-crud/docker-compose.yml)
+
+        ```yaml
+            services:
+            solid-crud:
+                image: us-central1-docker.pkg.dev/nossaia/solid-crud/solid-crud:alpha
+                container_name: solid-crud
+                restart: unless-stopped
+                ports:
+                    - &quot;80:80&quot;
+                    - &quot;443:443&quot;
+                volumes:
+                    - /etc/letsencrypt:/etc/letsencrypt
+        ```
+
+    3.2.3 Set enviroment variables in docker-compose.override.yml (/opt/solid-crud/docker-compose.override.yml)
+
+        ```yaml
+                environment:
+                    SECRET_VERSION: &quot;projects/79811639884/secrets/Solid-Secrets/versions/1&quot;
+                    DOMAIN_NAME: &quot;solid.karrera.ai&quot;
+                    TAXONOMY_SERVICE_HOST: &quot;https://karrera-backend-79811639884.us-east1.run.app&quot;
+                    ONTOLOGY_SERVICE_HOST: &quot;https://workdna-ai-79811639884.us-east1.run.app&quot;
+                    BIO_SERVICE_HOST: &quot;https://biography-api-79811639884.us-east1.run.app&quot;
+                    QUEUE_PUBLISHER_SERVICE_HOST: &quot;https://queuepublisher-79811639884.us-east1.run.app&quot;
+        ```
+</code></pre></div>
+<p>4 Deploy CSS server in VM</p>
+<div class="language-text highlight"><pre><span></span><code>4.1 Install Docker: (https://docs.docker.com/engine/install/debian/)
+
+    4.1.1 Add Docker&#39;s official GPG key:
+
+        sudo apt update
+        sudo apt install ca-certificates curl
+        sudo install -m 0755 -d /etc/apt/keyrings
+        sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+        sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    4.1.2 Add the repository to Apt sources:
+
+        sudo tee /etc/apt/sources.list.d/docker.sources &lt;&lt;EOF
+        Types: deb
+        URIs: https://download.docker.com/linux/debian
+        Suites: $(. /etc/os-release &amp;&amp; echo &quot;$VERSION_CODENAME&quot;)
+        Components: stable
+        Signed-By: /etc/apt/keyrings/docker.asc
+        EOF
+
+    4.1.3 Update and Install Docker
+
+        sudo apt update
+        sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+4.2 Install CSS: (https://communitysolidserver.github.io/CommunitySolidServer/latest/usage/starting-server/)
+
+    4.2.1 Clone the repo to get access to the configs
+
+        git clone https://github.com/CommunitySolidServer/CommunitySolidServer.git
+        cd CommunitySolidServer
+
+    4.2.2 Configure CSS Server
+
+        Copy Karrera logo to CommunitySolidServer/templates/images
+        Create json CSS config file (karrera.json)
+
+    4.2.3 Build the image
+
+        docker build -t css-server:1.0.3 .
+
+4.3 Install Certbot:
+
+    sudo apt install certbot
+
+4.4 Configure Firewall
+
+    Open ports HTTP (80) and HTTPS (443)
+
+4.5 Install Certificate: (https://certbot.eff.org/instructions?ws=other&amp;os=snap)
+
+    sudo certbot certonly --standalone
+
+4.6 Configure cron to renew certificates every Sunday 3:00am
+
+    4.6.1 Create script (/etc/letsencrypt/archive/css-dev.karrera.ai/update.sh) to copy latest version of certificates to certificates used by docker
+
+        #!/bin/bash
+
+        # Directory containing the files
+        DIR=&quot;/etc/letsencrypt/archive/css-dev.karrera.ai&quot;
+
+        # Find the latest fullchain file by sorting numerically
+        LATEST_FULLCHAIN=$(ls &quot;$DIR&quot;/fullchain*.pem 2&gt;/dev/null | \
+                 sed -E &#39;s/.*fullchain([0-9]+)\.pem/\1 \0/&#39; | \
+                 sort -n | \
+                 tail -1 | \
+                 cut -d&#39; &#39; -f2)
+
+        # Check if a file was found
+        if [ -n &quot;$LATEST_FULLCHAIN&quot; ]; then
+            cp &quot;$LATEST_FULLCHAIN&quot; &quot;$DIR/fullchain.pem&quot;
+            echo &quot;Copied $LATEST_FULLCHAIN to $DIR/fullchain.pem&quot;
+        else
+            echo &quot;No fullchain*.pem files found in $DIR&quot;
+        fi
+
+        # Find the latest privkey file by sorting numerically
+        LATEST_PRIVKEY=$(ls &quot;$DIR&quot;/privkey*.pem 2&gt;/dev/null | \
+                 sed -E &#39;s/.*privkey([0-9]+)\.pem/\1 \0/&#39; | \
+                 sort -n | \
+                 tail -1 | \
+                 cut -d&#39; &#39; -f2)
+
+        # Check if a file was found
+        if [ -n &quot;$LATEST_PRIVKEY&quot; ]; then
+            cp &quot;$LATEST_PRIVKEY&quot; &quot;$DIR/privkey.pem&quot;
+            echo &quot;Copied $LATEST_PRIVKEY to $DIR/privkey.pem&quot;
+        else
+            echo &quot;No privkey*.pem files found in $DIR&quot;
+        fi
+
+    4.6.2 Run update file to create certificates used by Docker
+
+        sudo /etc/letsencrypt/archive/css-dev.karrera.ai/update.sh
+
+    4.6.3 Add command line to root crontab
+
+        0 3 * * 0 docker stop css-server &amp;&amp; certbot renew &amp;&amp; /etc/letsencrypt/archive/css-dev.karrera.ai/update.sh &amp;&amp; docker start css-server
+
+4.7 Run the image, serving your `/PodData` directory on `https://css.karrera.ai`
+
+        docker run -d -p 443:3000 \
+        --name css-server \
+        --restart always \
+        -v /PodData:/data \
+        -v /etc/letsencrypt/archive/css.karrera.ai:/certificates \
+        -e NODE_OPTIONS=&quot;--max-old-space-size=4096&quot; \
+        -e CSS_ROOT_FILE_PATH=/data \
+        -e CSS_CONFIG=config/karrera.json \
+        -e CSS_BASE_URL=https://css.karrera.ai/ \
+        -e CSS_HTTPS_KEY=/certificates/privkey.pem \
+        -e CSS_HTTPS_CERT=/certificates/fullchain.pem \
+        css-server:1.0.3
+
+4.8 Create karreraai WebID
+
+4.9 Configure Pod Data Backup
+
+    4.9.1 Create Backup data folder
+
+        mkdir /Backup-PodData
+
+    4.9.2 Create Backup Bucket
+
+    4.9.3 Allow Default GCP Service account to be Storage Admin
+
+    4.9.4 Create script to Backup Pod Data and copy it to backup Bucket (/Backup-PodData/backup-poddata.sh)
+
+        #!/bin/bash
+
+        # Source and destination directories
+        SRC=&quot;/PodData&quot;
+        DEST=&quot;/Backup-PodData&quot;
+
+        # Create destination directory if it doesn&#39;t exist
+        mkdir -p &quot;$DEST&quot;
+
+        # Generate date-based filename
+        DATE=$(date +%Y-%m-%d)
+        FILENAME=&quot;PodData-$DATE.tar.gz&quot;
+
+        # Create the tar.gz archive
+        tar -czf &quot;$DEST/$FILENAME&quot; -C &quot;$SRC&quot; .
+
+        # Copy file to Backup Bucket
+        gsutil cp $DEST/$FILENAME gs://karrera-backup-bucket/CSS-Backup
+
+        # Optional: print a message (useful for logs)
+        echo &quot;Backup created: $DEST/$FILENAME&quot;
+
+    4.9.5 Allow script to be executable
+
+        chmod +x /Backup-PodData/backup-poddata.sh
+
+    4.9.6 Insert command in root crontab to execute backup every day at 4:00AM
+
+        sudo su
+        cronta -e
+        Insert line below:
+            0 4 * * * docker stop css-server &amp;&amp; /Backup-PodData/backup-poddata.sh &amp;&amp; docker start css-server
+</code></pre></div>
+<p>5 Set Cloudrun CD for all micro services</p>
+<p>5.1 Deploy Karrera-backend(Replit-backend and Postgres-backend)</p>
+<div class="language-text highlight"><pre><span></span><code>5.1.1 Update secret manager API call
+</code></pre></div>
+<p>5.2 Deploy Karrera-web</p>
+<div class="language-text highlight"><pre><span></span><code>5.2.1 Build Development
+
+Build in development mode
+npm run build:dev
+
+The build will:
+- Compile TypeScript
+- Process React
+- Minify code
+- Generate files in dist/public/
+
+5.2.2 Production Build
+
+Build in production mode
+npm run build:prod
+
+The build will:
+- Compile with production optimizations
+- Minify and optimize code
+- Generate optimized files in dist/public/
+</code></pre></div>
+<p>5.3 Deploy Queue publisher</p>
+<div class="language-text highlight"><pre><span></span><code>5.3.1 Queue publisher deployment (using GCP Console)
+
+    5.3.1.1 Navigate to Cloud Run
+    - Go to Cloud Run and click Services.
+    - Then click Deploy Container in top right.
+
+    5.3.1.2 Continuous Deployment Setup
+    - Select Continuously deploy new revisions from a source repository.
+    - Click Set Up Cloud Build.
+    - Repository Provider: Select GitHub.
+    - Repository: Select QueuePublisher repo.
+    - Build Configuration: Choose Dockerfile.
+    - Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
+
+    5.3.1.3 Service Settings
+    - Region: Select us-east1 for prod, us-central1 for dev.
+    - Authentication: Select Allow public access.
+    - Billing: Select Request-based.
+    - Scaling: Select Auto scaling, and set min = 1, max = 1. These values can change in the future.
+    - Ingress: In theory, can be used only internally, but we can select All as well.
+
+    5.3.1.4 Container Settings
+    - Go to Container, Networking, Security.
+    - Port: 8000 (make sure port 8000 is exposed).
+    - Select Containers
+
+        5.3.1.4.1 Settings
+        - Go to Settings.
+        - Resources: 512MiB (Memory) and 1 CPU - for now, values can change as we go.
+        - Revision Scaling: min = 1, max = 1.
+        - Other settings leave as default values.
+
+        5.3.1.4.2 Variables &amp; Secrets
+        - Go to Variables &amp; Secrets.
+        - Add the following environment variables (names: values):
+            - VERSION_NAME= &lt;Version of CloudAMQP server password google secrets&gt;
+            - SERVER_NAME= &lt;Cloud AMQP server name&gt;
+            - VIRTUAL_HOST= &lt;Cloud AMQP virtual host name&gt;
+            - HOST= &lt;Cloud AMQP host address&gt;
+            - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+            - APP_VERSION= &lt;Queue Publisher version - e.g. Dev&gt;
+            - APP_HOST= &lt;Queue publisher google host server - e.g. CloudRun-us-east1&gt;
+            - SCRAPE_QUEUE= &lt;Scrape_web | Scrape_web_DEV - prod or dev&gt;
+            - SCRAPE_DLQ= &lt;scrape_web_dlq | scrape_web_dlq_DEV - prod or dev&gt;
+            - ARTIFACT_QUEUE= &lt;Artifact_reader | Artifact_reader_DEV - prod or dev&gt;
+            - ARTIFACT_DLQ= &lt;artifact_reader_dlq | artifact_reader_dlq_DEV - prod or dev&gt;
+            - CV_QUEUE= &lt;CV_reader | CV_reader_DEV - prod or dev&gt;
+            - CV_DLQ= &lt;CV_reader_dlq | CV_reader_dlq_DEV - prod or dev&gt;
+            - CHAT_QUEUE= &lt;Chat_reader | Chat_reader_DEV - prod or dev&gt;
+            - CHAT_DLQ= &lt;chat_reader_dlq | chat_reader_dlq_DEV - prod or dev&gt;
+            - PI_QUEUE= &lt;PI_reader | PI_reader_DEV - prod or dev&gt;
+            - PI_DLQ= &lt;PI_reader_dlq | PI_reader_dlq_DEV - prod or dev&gt;
+            - MEMORY_QUEUE= &lt;Memory_creator | Memory_creator_DEV - prod or dev&gt;
+            - MEMORY_DLQ= &lt;memory_creator_dlq | memory_creator_dlq_DEV - prod or dev&gt;
+            - GENERIC_ARTIFACT_QUEUE= &lt;Generic_artifact_reader | Generic_artifact_reader_DEV - prod or dev&gt;
+            - GENERIC_ARTIFACT_DLQ= &lt;generic_artifact_dlq | generic_artifact_dlq_DEV - prod or dev&gt;
+
+        5.3.1.5 Create
+        - Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
+        - After this, look at the logs to see if everything is okay during the build.
+        - This build will deploy the the QueuePublisher service into the app.
+</code></pre></div>
+<p>5.4 Deploy WorkDNA</p>
+<div class="language-text highlight"><pre><span></span><code>5.4.1 Deploy ChromaDB on VM (Insert initial collections)
+
+    5.4.1.1 Open the VM (in our case, css-server)
+
+    5.4.1.2 Open port 8000
+
+    5.4.1.3  Pull the image from docker
+    docker pull chromadb/chroma:latest
+
+    5.4.1.4 Run the image inside the VM
+    docker run -d -v ./chroma-data:/data -p 8000:8000 --restart always chromadb/chroma 
+    - PS: Give a name if you want to using --name name-of-server
+
+    5.4.1.5 Update ChromaDB collections
+    To do that, we need to have embedded all the values (capabilities, workdna sheets for paths, paths descriptions, etc).
+    So, check the workdna-ai.md and sbert-chroma.md to know how to create collections and add the embeddings
+
+
+5.4.2 Create Bucket and Upload the Embedding Model
+
+    5.4.2.1 Install Sentence Trasnformers.
+    ```bash
+    pip install -U sentence-transformers
+    ```
+
+    5.4.2.2 Download the embedding model to local machine
+    We are using currently Qwen/Qwen3-Embedding-0.6B, so if we changed it, we would have to change the name and download the new one.
+    ```python
+    from sentence_transformers import SentenceTransformer
+
+    name_of_model = &quot;Qwen/Qwen3-Embedding-0.6B&quot;
+
+    model = SentenceTransformer(name_of_model)
+    model.save(name_of_model) ## This will save the whole model config to the local machine, under the folder with the name of the model
+    ```
+
+    5.4.2.3 Navigate to Cloud Storage
+    In the search bar at the top, type Buckets and select Cloud Storage &gt; Buckets.
+
+    5.4.2.4 Create and configure the Bucket
+    - Click the + CREATE button at the top of the page.
+    - Name your bucket (e.g., embedding-model) - names are public, so avoid sensitive names.
+    - Location: Set location to Multi-Region (us) or to the specific Region (e.g., `us-central1` for prod).
+    - Storage class: Select Standard.
+    - Access control: Select Uniform.
+    - Public Access Prevention: Ensure &quot;Enforce public access prevention on this bucket&quot; is checked.
+    - Create and Finalize: Click CREATE. If prompted with a &quot;Public access will be prevented&quot; warning, click CONFIRM.
+
+    5.4.2.5 Upload the folder to the bucket
+    - After the bucket is created, click the name of the bucket.
+    - In the Objects tab, Click Upload &gt; Upload folder.
+    - Select the folder create at step 5.4.2.2 in the dialog that appears, then click Open.
+    OR, if preferred, one can use the gcloud storage cp command in command line:
+    ```bash
+    gcloud storage cp FOLDER_PATH gs://DESTINATION_BUCKET_NAME
+    ```
+
+5.4.3 WorkDNA-AI deployment (using GCP Console)
+
+    5.4.3.1 Navigate to Cloud Run
+    - Go to Cloud Run and click Services.
+    - Then click Deploy Container in top right.
+
+    5.4.3.2 Continuous Deployment Setup
+    - Select Continuously deploy new revisions from a source repository.
+    - Click Set Up Cloud Build.
+    - Repository Provider: Select GitHub.
+    - Repository: Select WorkDNA-AI repo.
+    - Build Configuration: Choose Dockerfile.
+    - Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
+
+    5.4.3.3: Service Settings
+    - Region: Select us-east1 for prod, us-central1 for dev.
+    - Authentication: Select Allow public access.
+    - Billing: Select Request-based.
+    - Scaling: Select Auto scaling, and set min = 1, max = 1.
+    - Ingress: In theory, WorKDNA can be used only internally, but we can select All as well.
+
+    5.4.3.4: Container Settings
+    - Go to Container, Networking, Security.
+    - Port: 5005 (make sure port 5005 is exposed).
+    - Select Containers
+
+        5.4.3.4.1: Settings
+        - Go to Settings.
+        - Resources: 4 GiB (Memory) and 1 CPU - for now, values can change as we go.
+        - Add Health Check:
+            - Type: Select Startup Check.
+            - Probe type: Select TCP.
+            - Port: 5005.
+            - Every 240s, default settings.
+        - Revision Scaling: min = 1, max = 1.
+        - Other settings leave as default values.
+
+        5.4.3.4.2: Volumes (to mount the bucket to the container)
+        - Go to Volumes.
+        - Select Add Mount Volume.
+        - Select Cloud Storage Bucket.
+        - Select the storage volume from 5.4.2.
+        - Specify the path where you want to mount the volume (i.e. qwen_models).
+        - In Mount options, Enable implicit directions ON. 
+        - Click Done.
+
+        5.4.3.4.3: Variables &amp; Secrets
+        - Go to Variables &amp; Secrets.
+        - Add the following environment variables (names: values):
+            - GEMINI_SECRET: &lt;reference the url of the secret&gt;
+            - POSTGRES_PASSWORD_SECRET: &lt;reference the url of the secret&gt;
+            - CHROMA_DB_HOST: &lt;IP of the VM hosting the chroma&gt; 
+            - CHROMA_DB_PORT: &lt;chromaDB port&gt;
+            - APP_VERSION: dev / prod
+            - VERSION: &lt;version of the service itself, like v1.0, v1.1&gt;
+            - APP_COMPONENT: work-dna-ontology-service  
+            - POSTGRES_DB_NAME: &lt;name of the Postgres DB&gt;
+            - GCS_MOUNT_ROOT: &lt;path of the mounted bucket as we mentioned in 5.4.3.4.2&gt;
+
+        For now, we are referencing the secrets by pasting the url. We can switch it later to mounting the secret as well (TODO).
+
+        5.4.3.5 Create
+        - Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
+        - After this, look at the logs to see if everything is okay during the build.
+        - This build will deploy the the WorkDNA-AI service and all associated services into the app.
+</code></pre></div>
+<p>5.5 Deploy Biography API</p>
+<div class="language-text highlight"><pre><span></span><code>5.5.1 Biography API deployment (using GCP Console)
+
+    5.5.1.1 Navigate to Cloud Run
+    - Go to Cloud Run and click Services.
+    - Then click Deploy Container in top right.
+
+    5.5.1.2 Continuous Deployment Setup
+    - Select Continuously deploy new revisions from a source repository.
+    - Click Set Up Cloud Build.
+    - Repository Provider: Select GitHub.
+    - Repository: Select Biography_API repo.
+    - Build Configuration: Choose Dockerfile.
+    - Build Branch: Select $dev or $prod (accoridng to which version you are deploying).
+
+    5.5.1.3 Service Settings
+    - Region: Select us-east1 for prod, us-central1 for dev.
+    - Authentication: Select Allow public access.
+    - Billing: Select Request-based.
+    - Scaling: Select Auto scaling, and set min = 1, max = 1. These values can change in the future.
+    - Ingress: In theory, can be used only internally, but we can select All as well.
+
+    5.5.1.4 Container Settings
+    - Go to Container, Networking, Security.
+    - Port: 8000 (make sure port 8000 is exposed).
+    - Select Containers
+
+        5.5.1.4.1 Settings
+        - Go to Settings.
+        - Resources: 512MiB (Memory) and 1 CPU - for now, values can change as we go.
+        - Revision Scaling: min = 1, max = 1.
+        - Other settings leave as default values.
+
+        5.5.1.4.2 Variables &amp; Secrets
+        - Go to Variables &amp; Secrets.
+        - Add the following environment variables (names: values):
+            - GEMINI_API_KEY_VERSION_NAME= &lt;Version of Gemini-Api-Key password google secrets&gt;
+            - GEMINI_MODEL_ID= &lt;Gemini model used - e.g. gemini-2.5-flash&gt;
+            - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+            - APP_VERSION= &lt;Biography_API version - e.g. Dev&gt;
+            - APP_HOST= &lt;Biography_API google host server - e.g. CloudRun-us-east1&gt;
+
+        5.5.1.5 Create
+        - Click Create. Cloud Build will now trigger a deployment on every git push to the dev branch.
+        - After this, look at the logs to see if everything is okay during the build.
+        - This build will deploy the the Biography_API service into the app.
+</code></pre></div>
+<p>6 Set Cloudrun Worker Pool Services</p>
+<div class="language-text highlight"><pre><span></span><code>6.1 Deploy artifact-scrape-consumer in Worker Pool
+
+    6.1.1 artifact-scrape-consumer deployment (using GCP Console)
+
+        6.1.1.1 Navigate to Cloud Run
+        - Go to Cloud Run and click Worker Pools.
+        - Then click Deploy Container in top right.
+
+        6.1.1.2 Worker Pool Setup
+        - Select the container image URL, choosing the latest version from karrera-artifact-scrape-consumer inside karrera-consumers.
+
+        6.1.1.3 Service Settings
+        - Region: Select us-east1 for prod, us-central1 for dev.
+        - Instances: Select 1 as the number of instances. The number may be changed in the future.
+
+        6.1.1.4 Container Settings
+        - Go to Container, Networking, Security.
+        - Select Containers
+
+            6.1.1.4.1 Settings
+            - Go to Settings.
+            - Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+            - Other settings leave as default values.
+
+            6.1.1.4.2 Variables &amp; Secrets
+            - Go to Variables &amp; Secrets.
+            - Add the following environment variables (names: values):
+                - SERVER_VERSION_NAME= &lt;Version of CloudAMQP server password google secrets&gt;
+                - SERVER_NAME= &lt;Cloud AMQP server name&gt;
+                - VIRTUAL_HOST= &lt;Cloud AMQP virtual host name&gt;
+                - HOST= &lt;Cloud AMQP host address&gt;
+                - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+                - APP_VERSION= &lt;artifact-scrape-consumer version - e.g. Dev&gt;&gt;
+                - APP_HOST= &lt;artifact-scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1&gt;
+                - ARTIFACT_QUEUE= &lt;Artifact_reader | Artifact_reader_DEV - prod or dev&gt;
+                - ARTIFACT_DLQ= &lt;artifact_reader_dlq | artifact_reader_dlq_DEV - prod or dev&gt;
+                - POD_URL= &lt;URL of the PODs, for dev or prod&gt;
+                - X_API_KEY_VERSION_NAME= &lt;Version of X-API-Key password google secrets&gt;
+                - GEMINI_API_KEY_VERSION_NAME= &lt;Version of Gemini-Api-Key password google secrets&gt;
+                - GEMINI_MODEL_ID= &lt;Gemini model used - e.g. gemini-2.5-flash&gt;
+                - DNA_API_URL= &lt;WorkDNA CloudRun API URL&gt;
+                - DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+                - DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+
+            6.1.1.5 Create
+            - Click Create. The Worker Pool service will be created.
+            - After this, look at the logs to see if everything is okay during the build.
+            - This build will deploy the the artifact-scrape-consumer service into the app.
+
+6.2 Deploy chat-Consumer in Worker Pool
+
+    6.2.1 chat-consumer deployment (using GCP Console)
+
+        6.2.1.1 Navigate to Cloud Run
+        - Go to Cloud Run and click Worker Pools.
+        - Then click Deploy Container in top right.
+
+        6.2.1.2 Worker Pool Setup
+        - Select the container image URL, choosing the latest version from karrera-chat-consumer inside karrera-consumers.
+
+        6.2.1.3 Service Settings
+        - Region: Select us-east1 for prod, us-central1 for dev.
+        - Instances: Select 1 as the number of instances. The number may be changed in the future.
+
+        6.2.1.4 Container Settings
+        - Go to Container, Networking, Security.
+        - Select Containers
+
+            6.2.1.4.1 Settings
+            - Go to Settings.
+            - Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+            - Other settings leave as default values.
+
+            6.2.1.4.2 Variables &amp; Secrets
+            - Go to Variables &amp; Secrets.
+            - Add the following environment variables (names: values):
+                - SERVER_VERSION_NAME= &lt;Version of CloudAMQP server password google secrets&gt;
+                - SERVER_NAME= &lt;Cloud AMQP server name&gt;
+                - VIRTUAL_HOST= &lt;Cloud AMQP virtual host name&gt;
+                - HOST= &lt;Cloud AMQP host address&gt;
+                - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+                - APP_VERSION= &lt;chat-consumer version - e.g. Dev&gt;&gt;
+                - APP_HOST= &lt;chat-consumer google host server - e.g. CloudRun-Worker-pools-us-central1&gt;
+                - CHAT_QUEUE= &lt;Chat_reader | Chat_reader_DEV - prod or dev&gt;
+                - CHAT_DLQ= &lt;chat_reader_dlq | chat_reader_dlq_DEV - prod or dev&gt;
+                - POD_URL= &lt;URL of the PODs, for dev or prod&gt;
+                - X_API_KEY_VERSION_NAME= &lt;Version of X-API-Key password google secrets&gt;
+                - GEMINI_API_KEY_VERSION_NAME= &lt;Version of Gemini-Api-Key password google secrets&gt;
+                - GEMINI_MODEL_ID= &lt;Gemini model used - e.g. gemini-2.5-flash&gt;
+                - DNA_API_URL= &lt;WorkDNA CloudRun API URL&gt;
+                - DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+                - DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+                - AI_CHAT_ID= &lt;ID of the Chat Agent&gt;
+
+            6.2.1.5 Create
+            - Click Create. The Worker Pool service will be created.
+            - After this, look at the logs to see if everything is okay during the build.
+            - This build will deploy the the chat-consumer service into the app.
+
+6.3 Deploy scrape-consumer in Worker Pool
+
+    6.3.1 scrape-consumer deployment (using GCP Console)
+
+        6.3.1.1 Navigate to Cloud Run
+        - Go to Cloud Run and click Worker Pools.
+        - Then click Deploy Container in top right.
+
+        6.3.1.2 Worker Pool Setup
+        - Select the container image URL, choosing the latest version from karrera-scrape-consumer inside karrera-consumers.
+
+        6.3.1.3 Service Settings
+        - Region: Select us-east1 for prod, us-central1 for dev.
+        - Instances: Select 1 as the number of instances. The number may be changed in the future.
+
+        6.3.1.4 Container Settings
+        - Go to Container, Networking, Security.
+        - Select Containers
+
+            6.3.1.4.1 Settings
+            - Go to Settings.
+            - Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+            - Other settings leave as default values.
+
+            6.3.1.4.2 Variables &amp; Secrets
+            - Go to Variables &amp; Secrets.
+            - Add the following environment variables (names: values):
+                - SERPER_URL=https://google.serper.dev/search
+                - SERPER_API_KEY_VERSION_NAME= &lt;Version of SERPER-API-Key password google secrets&gt;
+                - SERVER_VERSION_NAME= &lt;Version of CloudAMQP server password google secrets&gt;
+                - SERVER_NAME= &lt;Cloud AMQP server name&gt;
+                - VIRTUAL_HOST= &lt;Cloud AMQP virtual host name&gt;
+                - HOST= &lt;Cloud AMQP host address&gt;
+                - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+                - APP_VERSION= &lt;scrape-consumer version - e.g. Dev&gt;&gt;
+                - APP_HOST= &lt;scrape-consumer google host server - e.g. CloudRun-Worker-pools-us-central1&gt;
+                - SCRAPE_QUEUE= &lt;Scrape_web | Scrape_web_DEV - prod or dev&gt;
+                - SCRAPE_DLQ= &lt;scrape_web_dlq | scrape_web_dlq_DEV - prod or dev&gt;
+                - POD_URL= &lt;URL of the PODs, for dev or prod&gt;
+                - X_API_KEY_VERSION_NAME= &lt;Version of X-API-Key password google secrets&gt;
+                - GEMINI_API_KEY_VERSION_NAME= &lt;Version of Gemini-Api-Key password google secrets&gt;
+                - GEMINI_MODEL_ID= &lt;Gemini model used - e.g. gemini-2.5-flash&gt;
+
+            6.3.1.5 Create
+            - Click Create. The Worker Pool service will be created.
+            - After this, look at the logs to see if everything is okay during the build.
+            - This build will deploy the the scrape-consumer service into the app.
+
+6.4 Deploy CV-Consumer in Worker Pool
+
+    6.4.1 CV-Consumer deployment (using GCP Console)
+
+        6.4.1.1 Navigate to Cloud Run
+        - Go to Cloud Run and click Worker Pools.
+        - Then click Deploy Container in top right.
+
+        6.4.1.2 Worker Pool Setup
+        - Select the container image URL, choosing the latest version from karrera-CV-Consumer inside karrera-consumers.
+
+        6.4.1.3 Service Settings
+        - Region: Select us-east1 for prod, us-central1 for dev.
+        - Instances: Select 1 as the number of instances. The number may be changed in the future.
+
+        6.4.1.4 Container Settings
+        - Go to Container, Networking, Security.
+        - Select Containers
+
+            6.4.1.4.1 Settings
+            - Go to Settings.
+            - Resources: 2Gib (Memory) and 1 CPU - for now, values can change as we go.
+            - Other settings leave as default values.
+
+            6.4.1.4.2 Variables &amp; Secrets
+            - Go to Variables &amp; Secrets.
+            - Add the following environment variables (names: values):
+                - SERVER_VERSION_NAME= &lt;Version of CloudAMQP server password google secrets&gt;
+                - SERVER_NAME= &lt;Cloud AMQP server name&gt;
+                - VIRTUAL_HOST= &lt;Cloud AMQP virtual host name&gt;
+                - HOST= &lt;Cloud AMQP host address&gt;
+                - SERVER_PORT= &lt;Cloud AMQP server port&gt;
+                - APP_VERSION= &lt;CV-Consumer version - e.g. Dev&gt;&gt;
+                - APP_HOST= &lt;CV-Consumer google host server - e.g. CloudRun-Worker-pools-us-central1&gt;
+                - CV_QUEUE= &lt;CV_reader | CV_reader_DEV - prod or dev&gt;
+                - CV_DLQ= &lt;CV_reader_dlq | CV_reader_dlq_DEV - prod or dev&gt;
+                - POD_URL= &lt;URL of the PODs, for dev or prod&gt;
+                - X_API_KEY_VERSION_NAME= &lt;Version of X-API-Key password google secrets&gt;
+                - GEMINI_API_KEY_VERSION_NAME= &lt;Version of Gemini-Api-Key password google secrets&gt;
+                - GEMINI_MODEL_ID= &lt;Gemini model used - e.g. gemini-2.5-flash&gt;
+                - DNA_API_URL= &lt;WorkDNA CloudRun API URL&gt;
+                - DNA_COMPETENCIES_API_ENDPOINT=/ontology/match_capabilities
+                - DNA_OCCUPATIONS_API_ENDPOINT=/ontology/match_paths
+
+            6.4.1.5 Create
+            - Click Create. The Worker Pool service will be created.
+            - After this, look at the logs to see if everything is okay during the build.
+            - This build will deploy the the CV-Consumer service into the app.
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Personal-AI-APIs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Personal-AI APIs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Personal-AI APIs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Solid/" class="md-footer__link md-footer__link--next" aria-label="Next: Solid">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Solid
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Karrera.AI
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.google.com" target="_blank" rel="noopener" title="www.google.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.google.com" target="_blank" rel="noopener" title="www.google.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.02 3.02 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.02 3.02 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.02 3.02 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.02 3.02 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814M9.545 15.568V8.432L15.818 12z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
