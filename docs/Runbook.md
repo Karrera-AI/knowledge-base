@@ -53,15 +53,46 @@
 			sudo apt update
 			sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-	3.2 Pull and run Solid server image
+	3.2 Create Service Account in CSS
 
-		3.2.1 Authenticate Docker to use Google Container Registry
+		3.2.1 Navigate to CSS Server URL (https://css.karrera.ai) and create an account for Karrera (e.g. css-service) with the Karrera WebId (karrerai)
+
+		3.2.2 Create a Credential for the service account, and save the client ID and client secret for later use in the secrets manager.
+
+		3.2.3 Using Penny (https://penny.vincenttunru.com/) or any Solid client, create the necessary public resources (e.g. /WorkDNA/KOIN-1.1/WorkDNA-Definitions.ttl) and mark them publicly accessible via ACL.
+
+	3.2 Update Secret Manager
+
+		3.2.1 Create new secret version
+
+			```JSON
+				{
+					"SVC_OIDC_ISSUER": "https://css.karrera.ai",
+					"SVC_CLIENT_ID": "karrera-service_xxxxxxx",
+					"SVC_CLIENT_SECRET": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+					"INTERNAL_API_KEY": "xxxxxxxxxxxxxxxxxxxxxxxxxxx",
+					"TAXONOMY_SERVICE_HOST": "https://xxxxxxxxxxxxxxxx",
+					"ONTOLOGY_SERVICE_HOST": "https://xxxxxxxxxxxxxxxx",
+					"BIO_SERVICE_HOST": "https://xxxxxxxxxxxxxxxx",
+					"QUEUE_PUBLISHER_SERVICE_HOST": "https://xxxxxxxxxxxxxxxx",
+					"DB_HOST": "https://xxxxxxxxxxxxxxxx",
+					"CSS_SERVER_HOST": "https://css.karrera.ai",
+					"LOG_LEVEL": "info",
+					"COSMETIC_BASE_URL": "https://xxxxxxxxxxxxxxx"
+				}
+			```
+		
+		3.2.2 Label the new version as alpha
+
+	3.3 Pull and run Solid server image
+
+		3.3.1 Authenticate Docker to use Google Container Registry
 		
 			```bash
 			gcloud auth configure-docker
 			```
 
-		3.2.2 Setup docker-compose.yml file (/opt/solid-crud/docker-compose.yml)
+		3.3.2 Setup docker-compose.yml file with enviroment variables(/opt/solid-crud/docker-compose.yml)
 		
 			```yaml
 				services:
@@ -74,21 +105,79 @@
 						- "443:443"
 					volumes:
 						- /etc/letsencrypt:/etc/letsencrypt
-			```
-
-		3.2.3 Set enviroment variables in docker-compose.override.yml (/opt/solid-crud/docker-compose.override.yml)
-		
-			```yaml
 					environment:
-						SECRET_VERSION: "projects/79811639884/secrets/Solid-Secrets/versions/1"
-						DOMAIN_NAME: "solid.karrera.ai"
-						TAXONOMY_SERVICE_HOST: "https://karrera-backend-79811639884.us-east1.run.app"
-						ONTOLOGY_SERVICE_HOST: "https://workdna-ai-79811639884.us-east1.run.app"
-						BIO_SERVICE_HOST: "https://biography-api-79811639884.us-east1.run.app"
-						QUEUE_PUBLISHER_SERVICE_HOST: "https://queuepublisher-79811639884.us-east1.run.app"
+					    LOG_LEVEL: info
+						DOMAIN_NAME: solid.karrera.ai
+						SECRET_VERSION: "projects/79811639884/secrets/Solid-Secrets/versions/alpha"
 			```
 
+		3.3.3 Setup SSL certificates with Certbot and put them in /etc/letsencrypt
 
+			3.3.3.1 Install Certificate: (https://certbot.eff.org/instructions?ws=other&os=snap)
+
+				```bash
+				sudo certbot certonly --standalone
+				```
+			3.3.3.2 Configure cron to renew certificates every Sunday 3:00am
+
+				3.3.3.2.1 Create script (/etc/letsencrypt/archive/solid.karrera.ai/update.sh) to copy latest version of certificates to certificates used by docker
+
+					```bash
+					#!/bin/bash
+
+					# Directory containing the files
+					DIR="/etc/letsencrypt/archive/solid.karrera.ai"
+
+					# Find the latest fullchain file by sorting numerically
+					LATEST_FULLCHAIN=$(ls "$DIR"/fullchain*.pem 2>/dev/null | \
+							sed -E 's/.*fullchain([0-9]+)\.pem/\1 \0/' | \
+							sort -n | \
+							tail -1 | \
+							cut -d' ' -f2)
+
+					# Check if a file was found
+					if [ -n "$LATEST_FULLCHAIN" ]; then
+						cp "$LATEST_FULLCHAIN" "$DIR/fullchain.pem"
+						echo "Copied $LATEST_FULLCHAIN to $DIR/fullchain.pem"
+					else
+						echo "No fullchain*.pem files found in $DIR"
+					fi
+
+					# Find the latest privkey file by sorting numerically
+					LATEST_PRIVKEY=$(ls "$DIR"/privkey*.pem 2>/dev/null | \
+							sed -E 's/.*privkey([0-9]+)\.pem/\1 \0/' | \
+							sort -n | \
+							tail -1 | \
+							cut -d' ' -f2)
+
+					# Check if a file was found
+					if [ -n "$LATEST_PRIVKEY" ]; then
+						cp "$LATEST_PRIVKEY" "$DIR/privkey.pem"
+						echo "Copied $LATEST_PRIVKEY to $DIR/privkey.pem"
+					else
+						echo "No privkey*.pem files found in $DIR"
+					fi
+					```
+				
+				3.3.3.2.2 Run update file to create certificates used by Docker
+
+					```bash
+					sudo /etc/letsencrypt/archive/solid.karrera.ai/update.sh
+					```
+
+				3.3.3.2.3 Add command line to root crontab
+
+					```bash
+					0 3 * * 0 docker stop solid-crud && certbot renew && /etc/letsencrypt/archive/solid.karrera.ai/update.sh && docker start solid-crud
+					```
+
+		3.3.4 Run the image, serving on `https://solid.karrera.ai`
+		
+			```bash
+			cd /opt/solid-crud
+			docker compose up -d
+			```
+		
 4 Deploy CSS server in VM
 
 	4.1 Install Docker: (https://docs.docker.com/engine/install/debian/)
